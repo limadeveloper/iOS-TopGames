@@ -2,7 +2,6 @@
 platform :ios, '10.0'
 
 target 'TopGames' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for TopGames
@@ -13,7 +12,11 @@ target 'TopGames' do
 
   target 'TopGamesTests' do
     inherit! :search_paths
+    
     # Pods for testing
+    pod 'Quick', '~> 1.2'
+    pod 'Nimble', '~> 7.0'
+
   end
 
 end
