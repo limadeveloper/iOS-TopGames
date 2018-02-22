@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		827FB85D203E7190001AF37C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FB85C203E7190001AF37C /* AppDelegate.swift */; };
 		827FB85F203E7190001AF37C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FB85E203E7190001AF37C /* ViewController.swift */; };
-		827FB862203E7190001AF37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827FB860203E7190001AF37C /* Main.storyboard */; };
 		827FB865203E7190001AF37C /* TopGames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 827FB863203E7190001AF37C /* TopGames.xcdatamodeld */; };
 		827FB867203E7190001AF37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827FB866203E7190001AF37C /* Assets.xcassets */; };
-		827FB86A203E7190001AF37C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827FB868203E7190001AF37C /* LaunchScreen.storyboard */; };
 		827FB875203E7190001AF37C /* TopGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FB874203E7190001AF37C /* TopGamesTests.swift */; };
+		827FB884203E7429001AF37C /* HALO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 827FB883203E7429001AF37C /* HALO.TTF */; };
+		827FB891203E760A001AF37C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827FB893203E760A001AF37C /* Localizable.strings */; };
+		827FB897203E76AC001AF37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827FB895203E76AC001AF37C /* Main.storyboard */; };
+		827FB898203E76AC001AF37C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827FB896203E76AC001AF37C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +32,17 @@
 		827FB859203E7190001AF37C /* TopGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827FB85C203E7190001AF37C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		827FB85E203E7190001AF37C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		827FB861203E7190001AF37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		827FB864203E7190001AF37C /* TopGames.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TopGames.xcdatamodel; sourceTree = "<group>"; };
 		827FB866203E7190001AF37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		827FB869203E7190001AF37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		827FB86B203E7190001AF37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		827FB870203E7190001AF37C /* TopGamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopGamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		827FB874203E7190001AF37C /* TopGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGamesTests.swift; sourceTree = "<group>"; };
 		827FB876203E7190001AF37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		827FB883203E7429001AF37C /* HALO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = HALO.TTF; sourceTree = "<group>"; };
+		827FB892203E760A001AF37C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		827FB894203E760E001AF37C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		827FB895203E76AC001AF37C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		827FB896203E76AC001AF37C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +84,12 @@
 		827FB85B203E7190001AF37C /* TopGames */ = {
 			isa = PBXGroup;
 			children = (
-				827FB85C203E7190001AF37C /* AppDelegate.swift */,
-				827FB85E203E7190001AF37C /* ViewController.swift */,
-				827FB860203E7190001AF37C /* Main.storyboard */,
-				827FB866203E7190001AF37C /* Assets.xcassets */,
-				827FB868203E7190001AF37C /* LaunchScreen.storyboard */,
-				827FB86B203E7190001AF37C /* Info.plist */,
-				827FB863203E7190001AF37C /* TopGames.xcdatamodeld */,
+				827FB886203E7484001AF37C /* Model */,
+				827FB887203E749F001AF37C /* View */,
+				827FB88C203E752A001AF37C /* ViewModel */,
+				827FB88D203E753C001AF37C /* API */,
+				827FB88E203E755C001AF37C /* Util */,
+				827FB881203E73BC001AF37C /* Application */,
 			);
 			path = TopGames;
 			sourceTree = "<group>";
@@ -97,6 +101,105 @@
 				827FB876203E7190001AF37C /* Info.plist */,
 			);
 			path = TopGamesTests;
+			sourceTree = "<group>";
+		};
+		827FB881203E73BC001AF37C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				827FB85C203E7190001AF37C /* AppDelegate.swift */,
+				827FB86B203E7190001AF37C /* Info.plist */,
+				827FB866203E7190001AF37C /* Assets.xcassets */,
+				827FB893203E760A001AF37C /* Localizable.strings */,
+				827FB882203E7429001AF37C /* Fonts */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		827FB882203E7429001AF37C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				827FB883203E7429001AF37C /* HALO.TTF */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		827FB885203E747D001AF37C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				827FB863203E7190001AF37C /* TopGames.xcdatamodeld */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		827FB886203E7484001AF37C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				827FB885203E747D001AF37C /* Manager */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		827FB887203E749F001AF37C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				827FB889203E74F1001AF37C /* Storyboard */,
+				827FB88A203E7505001AF37C /* View */,
+				827FB888203E74C8001AF37C /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		827FB888203E74C8001AF37C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				827FB85E203E7190001AF37C /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		827FB889203E74F1001AF37C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				827FB896203E76AC001AF37C /* LaunchScreen.storyboard */,
+				827FB895203E76AC001AF37C /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		827FB88A203E7505001AF37C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				827FB88B203E7518001AF37C /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		827FB88B203E7518001AF37C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		827FB88C203E752A001AF37C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		827FB88D203E753C001AF37C /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		827FB88E203E755C001AF37C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +268,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 827FB850203E7190001AF37C;
 			productRefGroup = 827FB85A203E7190001AF37C /* Products */;
@@ -182,9 +286,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				827FB86A203E7190001AF37C /* LaunchScreen.storyboard in Resources */,
+				827FB891203E760A001AF37C /* Localizable.strings in Resources */,
+				827FB884203E7429001AF37C /* HALO.TTF in Resources */,
 				827FB867203E7190001AF37C /* Assets.xcassets in Resources */,
-				827FB862203E7190001AF37C /* Main.storyboard in Resources */,
+				827FB898203E76AC001AF37C /* LaunchScreen.storyboard in Resources */,
+				827FB897203E76AC001AF37C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,20 +333,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		827FB860203E7190001AF37C /* Main.storyboard */ = {
+		827FB893203E760A001AF37C /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				827FB861203E7190001AF37C /* Base */,
+				827FB892203E760A001AF37C /* en */,
+				827FB894203E760E001AF37C /* pt-BR */,
 			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		827FB868203E7190001AF37C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				827FB869203E7190001AF37C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -250,6 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -294,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -307,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -345,7 +446,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -359,7 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9572JBENB;
-				INFOPLIST_FILE = TopGames/Info.plist;
+				INFOPLIST_FILE = TopGames/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jlimadeveloper.TopGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,7 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9572JBENB;
-				INFOPLIST_FILE = TopGames/Info.plist;
+				INFOPLIST_FILE = TopGames/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jlimadeveloper.TopGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
