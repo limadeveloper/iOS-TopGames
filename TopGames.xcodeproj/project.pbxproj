@@ -20,6 +20,8 @@
 		82BC0923203EEB6B00636232 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC0922203EEB6B00636232 /* HomeCell.swift */; };
 		82BC0925203EEB9900636232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC0924203EEB9900636232 /* HomeViewController.swift */; };
 		82BC0927203EEBDB00636232 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC0926203EEBDB00636232 /* DetailViewController.swift */; };
+		82BC0929203F900000636232 /* LocalizedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC0928203F900000636232 /* LocalizedUtil.swift */; };
+		82BC092B203F94B700636232 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC092A203F94B700636232 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		82BC0922203EEB6B00636232 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		82BC0924203EEB9900636232 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		82BC0926203EEBDB00636232 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		82BC0928203F900000636232 /* LocalizedUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedUtil.swift; sourceTree = "<group>"; };
+		82BC092A203F94B700636232 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CDE54F3081785CF51BF490AC /* Pods-TopGamesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGamesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGamesTests/Pods-TopGamesTests.release.xcconfig"; sourceTree = "<group>"; };
 		EC3CA3CC0C10E901A17CFAD4 /* Pods-TopGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +183,7 @@
 		827FB888203E74C8001AF37C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				82BC092A203F94B700636232 /* TabBarController.swift */,
 				82BC0924203EEB9900636232 /* HomeViewController.swift */,
 				82BC0926203EEBDB00636232 /* DetailViewController.swift */,
 			);
@@ -227,6 +232,7 @@
 		827FB88E203E755C001AF37C /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				82BC0928203F900000636232 /* LocalizedUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -497,7 +503,9 @@
 				82BC0923203EEB6B00636232 /* HomeCell.swift in Sources */,
 				82BC0927203EEBDB00636232 /* DetailViewController.swift in Sources */,
 				827FB865203E7190001AF37C /* TopGames.xcdatamodeld in Sources */,
+				82BC092B203F94B700636232 /* TabBarController.swift in Sources */,
 				82BC0925203EEB9900636232 /* HomeViewController.swift in Sources */,
+				82BC0929203F900000636232 /* LocalizedUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

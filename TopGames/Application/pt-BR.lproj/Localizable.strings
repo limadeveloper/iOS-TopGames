@@ -5,3 +5,12 @@
   Created by John Lima on 22/02/18.
   Copyright © 2018 limadeveloper. All rights reserved.
 */
+
+/* Home */
+"home.navigation.title" = "Top Jogos";
+
+/* Favorites */
+"favorites.navigation.title" = "Favoritos";
+
+/* Details */
+"details.viewersLabel.text" = "Visualizações: ";
