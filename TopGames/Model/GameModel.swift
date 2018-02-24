@@ -23,6 +23,7 @@ class GameModel: Codable {
     var viewers: Int
     var channels: Int
     var isRecorded: Bool? = false
+    var isFavorite: Bool? = false
     
     struct Game: Codable {
         var name: String
@@ -40,6 +41,7 @@ class GameModel: Codable {
         viewers = Int(entity.viewers)
         channels = Int(entity.channels)
         isRecorded = true
+        isFavorite = entity.isFavorite
     }
 }
 
@@ -86,6 +88,7 @@ extension GameModel {
         entity.locale = game?.locale
         entity.viewers = Int32(viewers)
         entity.channels = Int32(channels)
+        entity.isFavorite = isFavorite ?? false
         
         dataManager.record(entity.managedObjectContext) { recordGameError in
             self.game?.image?.recordImage(with: id) { _ in
@@ -107,6 +110,7 @@ extension GameModel {
             entity.locale = game?.locale
             entity.viewers = Int32(viewers)
             entity.channels = Int32(channels)
+            entity.isFavorite = entity.isFavorite ? entity.isFavorite : isFavorite ?? false
             
             dataManager.record(entity.managedObjectContext) { error in
                 if error == nil, let gameId = self.game?.id {
@@ -140,7 +144,7 @@ extension GameModel {
         }
     }
     
-    static func isDelete() -> Bool? {
+    static func delete() -> Bool? {
         let isImageDeleted = dataManager.delete(entity: .image)
         let isLogoDeleted = dataManager.delete(entity: .logo)
         let isGameDeleted = dataManager.delete(entity: .game)
@@ -149,7 +153,7 @@ extension GameModel {
     }
     
     static func delele() {
-        _ = isDelete()
+        _ = delete()
     }
     
     static func fetchResult(with paramValueNumber: (value: Int, key: String, type: DataManager.PredicateType)? = nil, paramValueText: (value: String, key: String, type: DataManager.PredicateType)? = nil) -> (games: [GameModel]?, error: String?) {
@@ -190,5 +194,11 @@ extension GameModel {
     static func fetchGameModel(by id: Int) -> GameModel? {
         guard let entity = fetchGameEntity(by: id) else { return nil }
         return GameModel(entity: entity)
+    }
+    
+    static func updateFavorite(with value: Bool, gameId: Int, completion: ((Error?) -> Void)? = nil) {
+        let entity = fetchGameEntity(by: gameId)
+        entity?.isFavorite = value
+        dataManager.record(entity?.managedObjectContext, completion: completion)
     }
 }
