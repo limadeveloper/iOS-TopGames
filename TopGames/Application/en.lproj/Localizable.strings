@@ -14,3 +14,8 @@
 
 /* Details */
 "details.viewersLabel.text" = "Viewers: ";
+
+/* Error */
+"error.save.data" = "No possible to save the data: Error - 01";
+"error.data.noFound" = "Data no found";
+"error.noConnection" = "No connection";

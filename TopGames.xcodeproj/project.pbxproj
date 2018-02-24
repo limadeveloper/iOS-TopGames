@@ -10,9 +10,8 @@
 		6B6A73BB4ADDE5600581CDA4 /* Pods_TopGamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFD8B7A8CC29E019F2E4D25 /* Pods_TopGamesTests.framework */; };
 		77A84F9ABF65D396F8853C12 /* Pods_TopGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114E60308887859746665BB2 /* Pods_TopGames.framework */; };
 		827FB85D203E7190001AF37C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FB85C203E7190001AF37C /* AppDelegate.swift */; };
-		827FB865203E7190001AF37C /* TopGames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 827FB863203E7190001AF37C /* TopGames.xcdatamodeld */; };
+		827FB865203E7190001AF37C /* DBGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 827FB863203E7190001AF37C /* DBGame.xcdatamodeld */; };
 		827FB867203E7190001AF37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827FB866203E7190001AF37C /* Assets.xcassets */; };
-		827FB875203E7190001AF37C /* TopGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FB874203E7190001AF37C /* TopGamesTests.swift */; };
 		827FB884203E7429001AF37C /* HALO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 827FB883203E7429001AF37C /* HALO.TTF */; };
 		827FB891203E760A001AF37C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827FB893203E760A001AF37C /* Localizable.strings */; };
 		827FB897203E76AC001AF37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827FB895203E76AC001AF37C /* Main.storyboard */; };
@@ -22,6 +21,10 @@
 		82BC0927203EEBDB00636232 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC0926203EEBDB00636232 /* DetailViewController.swift */; };
 		82BC0929203F900000636232 /* LocalizedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC0928203F900000636232 /* LocalizedUtil.swift */; };
 		82BC092B203F94B700636232 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC092A203F94B700636232 /* TabBarController.swift */; };
+		82BC092D2040F4C700636232 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC092C2040F4C700636232 /* DataManager.swift */; };
+		82BC092F2040F50C00636232 /* GameLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC092E2040F50C00636232 /* GameLogo.swift */; };
+		82BC09312040F53B00636232 /* GameImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09302040F53B00636232 /* GameImage.swift */; };
+		82BC09332040F55D00636232 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09322040F55D00636232 /* GameModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +48,6 @@
 		827FB866203E7190001AF37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		827FB86B203E7190001AF37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		827FB870203E7190001AF37C /* TopGamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopGamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		827FB874203E7190001AF37C /* TopGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGamesTests.swift; sourceTree = "<group>"; };
 		827FB876203E7190001AF37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		827FB883203E7429001AF37C /* HALO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = HALO.TTF; sourceTree = "<group>"; };
 		827FB892203E760A001AF37C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -57,6 +59,10 @@
 		82BC0926203EEBDB00636232 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		82BC0928203F900000636232 /* LocalizedUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedUtil.swift; sourceTree = "<group>"; };
 		82BC092A203F94B700636232 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		82BC092C2040F4C700636232 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		82BC092E2040F50C00636232 /* GameLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogo.swift; sourceTree = "<group>"; };
+		82BC09302040F53B00636232 /* GameImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameImage.swift; sourceTree = "<group>"; };
+		82BC09322040F55D00636232 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		CDE54F3081785CF51BF490AC /* Pods-TopGamesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGamesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGamesTests/Pods-TopGamesTests.release.xcconfig"; sourceTree = "<group>"; };
 		EC3CA3CC0C10E901A17CFAD4 /* Pods-TopGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,7 +134,6 @@
 		827FB873203E7190001AF37C /* TopGamesTests */ = {
 			isa = PBXGroup;
 			children = (
-				827FB874203E7190001AF37C /* TopGamesTests.swift */,
 				827FB876203E7190001AF37C /* Info.plist */,
 			);
 			path = TopGamesTests;
@@ -157,7 +162,8 @@
 		827FB885203E747D001AF37C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				827FB863203E7190001AF37C /* TopGames.xcdatamodeld */,
+				827FB863203E7190001AF37C /* DBGame.xcdatamodeld */,
+				82BC092C2040F4C700636232 /* DataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -165,6 +171,9 @@
 		827FB886203E7484001AF37C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82BC09322040F55D00636232 /* GameModel.swift */,
+				82BC09302040F53B00636232 /* GameImage.swift */,
+				82BC092E2040F50C00636232 /* GameLogo.swift */,
 				827FB885203E747D001AF37C /* Manager */,
 			);
 			path = Model;
@@ -500,12 +509,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				827FB85D203E7190001AF37C /* AppDelegate.swift in Sources */,
+				82BC092D2040F4C700636232 /* DataManager.swift in Sources */,
 				82BC0923203EEB6B00636232 /* HomeCell.swift in Sources */,
 				82BC0927203EEBDB00636232 /* DetailViewController.swift in Sources */,
-				827FB865203E7190001AF37C /* TopGames.xcdatamodeld in Sources */,
+				827FB865203E7190001AF37C /* DBGame.xcdatamodeld in Sources */,
 				82BC092B203F94B700636232 /* TabBarController.swift in Sources */,
 				82BC0925203EEB9900636232 /* HomeViewController.swift in Sources */,
+				82BC09312040F53B00636232 /* GameImage.swift in Sources */,
+				82BC092F2040F50C00636232 /* GameLogo.swift in Sources */,
 				82BC0929203F900000636232 /* LocalizedUtil.swift in Sources */,
+				82BC09332040F55D00636232 /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,7 +526,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				827FB875203E7190001AF37C /* TopGamesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,13 +762,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		827FB863203E7190001AF37C /* TopGames.xcdatamodeld */ = {
+		827FB863203E7190001AF37C /* DBGame.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				827FB864203E7190001AF37C /* TopGames.xcdatamodel */,
 			);
 			currentVersion = 827FB864203E7190001AF37C /* TopGames.xcdatamodel */;
-			path = TopGames.xcdatamodeld;
+			path = DBGame.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
