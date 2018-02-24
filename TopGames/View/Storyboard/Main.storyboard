@@ -277,19 +277,36 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubi-d9-HIC">
+                                                    <rect key="frame" x="116" y="8" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="FJH-cy-xsC"/>
+                                                        <constraint firstAttribute="width" constant="30" id="v0O-DO-Ijc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="0.92549019610000005" green="0.1529411765" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="markFavoriteWithSender:" destination="OUx-BZ-J9h" eventType="touchUpInside" id="1Yp-Fp-Xx6"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.066666666669999999" green="0.074509803920000006" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="uMF-Tu-E3J" firstAttribute="top" secondItem="IRj-Hy-4eR" secondAttribute="bottom" constant="8" id="EA9-wq-gAp"/>
+                                            <constraint firstItem="ubi-d9-HIC" firstAttribute="top" secondItem="OUx-BZ-J9h" secondAttribute="top" constant="8" id="Hmo-wq-qfy"/>
                                             <constraint firstAttribute="bottom" secondItem="uMF-Tu-E3J" secondAttribute="bottom" constant="8" id="UZK-BB-nu9"/>
                                             <constraint firstAttribute="trailing" secondItem="uMF-Tu-E3J" secondAttribute="trailing" constant="8" id="bsp-yT-8wg"/>
+                                            <constraint firstAttribute="trailing" secondItem="ubi-d9-HIC" secondAttribute="trailing" constant="8" id="cBr-lC-YQd"/>
                                             <constraint firstItem="uMF-Tu-E3J" firstAttribute="leading" secondItem="OUx-BZ-J9h" secondAttribute="leading" constant="8" id="cMB-oe-FEM"/>
                                             <constraint firstAttribute="trailing" secondItem="IRj-Hy-4eR" secondAttribute="trailing" id="owy-FZ-cgq"/>
                                             <constraint firstItem="IRj-Hy-4eR" firstAttribute="leading" secondItem="OUx-BZ-J9h" secondAttribute="leading" id="pv8-70-LFD"/>
                                             <constraint firstItem="IRj-Hy-4eR" firstAttribute="top" secondItem="OUx-BZ-J9h" secondAttribute="top" id="vEB-en-9Dm"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="ubi-d9-HIC" id="pRa-FJ-DM0"/>
                                             <outlet property="imageView" destination="IRj-Hy-4eR" id="tuf-dg-roP"/>
                                             <outlet property="titleLabel" destination="uMF-Tu-E3J" id="WbS-8T-21H"/>
                                         </connections>

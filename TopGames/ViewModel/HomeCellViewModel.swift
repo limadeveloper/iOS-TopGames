@@ -11,21 +11,27 @@ import Foundation
 class HomeCellViewModel: NSObject {
     
     // MARK: - Properties
-    private var itemImage: String?
-    private var itemName: String?
+    private var modelImage: String?
+    private var modelName: String?
+    private var modelId: Int?
     
     // MARK: - LifeCycle
     init?(model: GameModel?) {
-        itemName = model?.game?.name
-        itemImage = model?.game?.image?.large
+        modelName = model?.game?.name
+        modelImage = model?.game?.image?.large
+        modelId = model?.game?.id
     }
     
     // MARK: - Actions
     func getItemImage() -> String? {
-        return itemImage
+        return modelImage
     }
     
     func getItemName() -> String? {
-        return itemName
+        return modelName
+    }
+    
+    func updateFavoriteModel(completion: (() -> Void)? = nil) {
+        completion?()
     }
 }

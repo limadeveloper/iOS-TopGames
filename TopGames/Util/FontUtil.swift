@@ -11,4 +11,8 @@ struct FontUtil {
     struct FontName {
         static let halo = "Halo"
     }
+    
+    struct FontIcon {
+        static let heart = "heart"
+    }
 }

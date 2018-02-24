@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-// MARK: UITabBarDelegate
+// MARK: - UITabBarDelegate
 extension HomeViewController: UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let selectedIndex = tabBar.items?.index(of: item) ?? self.tabBar.homeIndex
@@ -109,7 +109,7 @@ extension HomeViewController: UITabBarDelegate {
     }
 }
 
-// MARK: UICollectionViewDataSource and UICollectionViewDelegate
+// MARK: - UICollectionViewDataSource and UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -120,6 +120,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? HomeCell
         if let selectedModel = homeViewModel.models?[indexPath.item] {
             cell?.homeCellViewModel = HomeCellViewModel(model: selectedModel)
+            cell?.delegate = self
         }
         return cell ?? UICollectionViewCell()
     }
@@ -137,5 +138,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 strongSelf.collectionView.reloadData()
             }
         }
+    }
+}
+
+// MARK: - HomeCellDelegate
+extension HomeViewController: HomeCellDelegate {
+    func homeCell(_ homeCell: HomeCell, didSelect favoriteButton: UIButton) {
+        collectionView.reloadData()
     }
 }
