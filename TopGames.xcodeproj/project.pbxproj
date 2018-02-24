@@ -28,6 +28,7 @@
 		82BC09372040F90D00636232 /* top_games.json in Resources */ = {isa = PBXBuildFile; fileRef = 82BC09362040F90D00636232 /* top_games.json */; };
 		82BC09382040F91E00636232 /* top_games.json in Resources */ = {isa = PBXBuildFile; fileRef = 82BC09362040F90D00636232 /* top_games.json */; };
 		82BC093A2040F94400636232 /* GameModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09392040F94400636232 /* GameModelSpec.swift */; };
+		82BC093C2040FB3800636232 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC093B2040FB3800636232 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		82BC09322040F55D00636232 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		82BC09362040F90D00636232 /* top_games.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = top_games.json; sourceTree = "<group>"; };
 		82BC09392040F94400636232 /* GameModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModelSpec.swift; sourceTree = "<group>"; };
+		82BC093B2040FB3800636232 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CDE54F3081785CF51BF490AC /* Pods-TopGamesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGamesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGamesTests/Pods-TopGamesTests.release.xcconfig"; sourceTree = "<group>"; };
 		EC3CA3CC0C10E901A17CFAD4 /* Pods-TopGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,6 +243,7 @@
 		827FB88D203E753C001AF37C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				82BC093B2040FB3800636232 /* APIClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				82BC0923203EEB6B00636232 /* HomeCell.swift in Sources */,
 				82BC0927203EEBDB00636232 /* DetailViewController.swift in Sources */,
 				827FB865203E7190001AF37C /* DBGame.xcdatamodeld in Sources */,
+				82BC093C2040FB3800636232 /* APIClient.swift in Sources */,
 				82BC092B203F94B700636232 /* TabBarController.swift in Sources */,
 				82BC0925203EEB9900636232 /* HomeViewController.swift in Sources */,
 				82BC09312040F53B00636232 /* GameImage.swift in Sources */,
