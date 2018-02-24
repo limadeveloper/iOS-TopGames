@@ -4,6 +4,7 @@
         <attribute name="channels" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="giantbombId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="locale" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="localizedName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,8 +28,8 @@
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="logo" inverseEntity="GameEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="193"/>
-        <element name="LogoEntity" positionX="126" positionY="104" width="128" height="118"/>
+        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="208"/>
         <element name="ImageEntity" positionX="124" positionY="-81" width="128" height="118"/>
+        <element name="LogoEntity" positionX="126" positionY="104" width="128" height="118"/>
     </elements>
 </model>
