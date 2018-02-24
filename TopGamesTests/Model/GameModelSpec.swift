@@ -46,19 +46,23 @@ class GameModelSpec: QuickSpec {
                 expect(model?.viewers).to(equal(149945))
                 expect(model?.channels).to(equal(756))
                 expect(model?.isRecorded).to(beNil())
+                expect(model?.isFavorite).to(beNil())
             }
             
             it("should be able to record data") {
                 
-                expect(GameModel.isDelete()).to(equal(true))
+                expect(GameModel.delete()).to(equal(true))
+                
+                model?.isFavorite = true
                 
                 model?.recordGame { error in
                     expect(error).to(beNil())
                 }
                 
-                guard let id = model?.game?.id else { return }
+                let gameId = model?.game?.id
+                expect(gameId).toNot(beNil())
                 
-                let recorded = GameModel.fetchGameModel(by: id)
+                let recorded = GameModel.fetchGameModel(by: gameId!)
                 
                 expect(recorded?.game?.name).to(equal("Dota 2"))
                 expect(recorded?.game?.popularity).to(equal(140815))
@@ -69,8 +73,20 @@ class GameModelSpec: QuickSpec {
                 expect(recorded?.viewers).to(equal(149945))
                 expect(recorded?.channels).to(equal(756))
                 expect(recorded?.isRecorded).to(equal(true))
-                
-                expect(GameModel.isDelete()).to(equal(true))
+                expect(recorded?.isFavorite).to(equal(true))
+            }
+            
+            it("should be able to update favorite value") {
+                let gameId = model?.game?.id
+                expect(gameId).toNot(beNil())
+                GameModel.updateFavorite(with: false, gameId: gameId!) { _ in
+                    let recorded = GameModel.fetchGameModel(by: gameId!)
+                    expect(recorded?.isFavorite).to(equal(false))
+                }
+            }
+            
+            afterSuite {
+                expect(GameModel.delete()).to(equal(true))
             }
         }
     }
