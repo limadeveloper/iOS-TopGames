@@ -129,6 +129,7 @@ struct DataManager {
     }
 }
 
+// MARK: - Extensions
 extension Data {
     func toModel() -> GameModel? {
         return try? JSONDecoder().decode(GameModel.self, from: self)
@@ -146,6 +147,12 @@ extension Collection {
                 result.append(model)
             }
         }
+        return result
+    }
+    
+    func orderByViewers() -> [GameModel] {
+        let models = (self as? [GameModel] ?? [])
+        let result = models.sorted { $0.viewers < $1.viewers }
         return result
     }
     
