@@ -14,6 +14,9 @@ struct LocalizedUtil {
         static let homeNavigationTitle = "home.navigation.title".localized()
         static let favoritesNavigationTitle = "favorites.navigation.title".localized()
         static let detailsViewersLabelText = "details.viewersLabel.text".localized()
+        static let errorSaveData = "error.save.data".localized()
+        static let errorDataNoFound = "error.data.noFound".localized()
+        static let errorNoConnection = "error.noConnection".localized()
     }
 }
 

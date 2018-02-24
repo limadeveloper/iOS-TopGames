@@ -14,3 +14,8 @@
 
 /* Details */
 "details.viewersLabel.text" = "Visualizações: ";
+
+/* Error */
+"error.save.data" = "Não foi possível salvar os dados no momento: Erro - 01";
+"error.data.noFound" = "Dados não encontrados";
+"error.noConnection" = "Sem conexão";
