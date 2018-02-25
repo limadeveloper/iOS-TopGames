@@ -16,19 +16,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var backgroundLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var configButtonItem = UIBarButtonItem()
     private let tabBar = TabBarController()
+    private var configButtonItem = UIBarButtonItem()
+    private var searchEnable = false
     
     private let kEmptyValue = 0
     private let kConfigButtonFontSize: CGFloat = 25
     private let kConfigButtonRect = CGRect(x: 0, y: 0, width: 25, height: 25)
-    private let kCollectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.33, 0.3))
-    private let kCellName = "\(HomeCell.self)"
     private let kSearchBarTextFieldKey = "searchField"
     
+    let cellName = "\(HomeCell.self)"
+    let collectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.33, 0.3))
     let refreshControl = UIRefreshControl()
     let homeViewModel = HomeViewModel()
-    var searchEnable = false
     var searchController: UISearchController?
     
     // MARK: - LifeCycle
@@ -135,12 +135,12 @@ class HomeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         
         let layout = KTCenterFlowLayout()
-        layout.minimumInteritemSpacing = kCollectionlayout.minInteritemSpacing
-        layout.minimumLineSpacing = kCollectionlayout.minLineSpacing
+        layout.minimumInteritemSpacing = collectionlayout.minInteritemSpacing
+        layout.minimumLineSpacing = collectionlayout.minLineSpacing
         
         layout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width * kCollectionlayout.size.percentWidth,
-            height: UIScreen.main.bounds.height * kCollectionlayout.size.percentHeight
+            width: UIScreen.main.bounds.width * collectionlayout.size.percentWidth,
+            height: UIScreen.main.bounds.height * collectionlayout.size.percentHeight
         )
         
         collectionView.collectionViewLayout = layout
@@ -193,7 +193,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellName, for: indexPath) as? HomeCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? HomeCell
         
         guard let data = searchEnable ? homeViewModel.searchModels : homeViewModel.models else { return cell ?? UICollectionViewCell() }
         

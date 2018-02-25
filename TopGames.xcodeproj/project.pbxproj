@@ -10,6 +10,8 @@
 		6B6A73BB4ADDE5600581CDA4 /* Pods_TopGamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFD8B7A8CC29E019F2E4D25 /* Pods_TopGamesTests.framework */; };
 		77A84F9ABF65D396F8853C12 /* Pods_TopGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114E60308887859746665BB2 /* Pods_TopGames.framework */; };
 		825F09202042852B009EEECB /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F091F2042852B009EEECB /* AlertUtil.swift */; };
+		825F092620430E21009EEECB /* HomeViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F092520430E21009EEECB /* HomeViewControllerSpec.swift */; };
+		825F092A2043146C009EEECB /* HomeCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F09292043146C009EEECB /* HomeCellSpec.swift */; };
 		827FB85D203E7190001AF37C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FB85C203E7190001AF37C /* AppDelegate.swift */; };
 		827FB865203E7190001AF37C /* DBGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 827FB863203E7190001AF37C /* DBGame.xcdatamodeld */; };
 		827FB867203E7190001AF37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827FB866203E7190001AF37C /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		4EC6550F325BAFB26BA277A9 /* Pods-TopGamesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGamesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopGamesTests/Pods-TopGamesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6FB89036F313F47A5DBFCBAF /* Pods-TopGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.debug.xcconfig"; sourceTree = "<group>"; };
 		825F091F2042852B009EEECB /* AlertUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
+		825F092520430E21009EEECB /* HomeViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSpec.swift; sourceTree = "<group>"; };
+		825F09292043146C009EEECB /* HomeCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellSpec.swift; sourceTree = "<group>"; };
 		827FB859203E7190001AF37C /* TopGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827FB85C203E7190001AF37C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		827FB864203E7190001AF37C /* TopGames.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TopGames.xcdatamodel; sourceTree = "<group>"; };
@@ -119,6 +123,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		825F092120430DE8009EEECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				825F092720431445009EEECB /* View */,
+				825F092220430DFB009EEECB /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		825F092220430DFB009EEECB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				825F092520430E21009EEECB /* HomeViewControllerSpec.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		825F092720431445009EEECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				825F092820431456009EEECB /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		825F092820431456009EEECB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				825F09292043146C009EEECB /* HomeCellSpec.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		827FB850203E7190001AF37C = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +195,7 @@
 				827FB876203E7190001AF37C /* Info.plist */,
 				82BC09352040F8DB00636232 /* JSON */,
 				82BC09342040F89F00636232 /* Model */,
+				825F092120430DE8009EEECB /* View */,
 			);
 			path = TopGamesTests;
 			sourceTree = "<group>";
@@ -587,6 +625,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				82BC093A2040F94400636232 /* GameModelSpec.swift in Sources */,
+				825F092620430E21009EEECB /* HomeViewControllerSpec.swift in Sources */,
+				825F092A2043146C009EEECB /* HomeCellSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

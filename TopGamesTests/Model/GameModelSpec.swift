@@ -19,8 +19,9 @@ class GameModelSpec: QuickSpec {
             let apiClient = APIClient()
             var model: GameModel?
             
-            beforeEach {
+            beforeSuite {
                 model = ((apiClient.fetchJSON(from: topGamesJsonFileName) as? [Any])?.toModels() ?? []).first
+                expect(GameModel.delete()).to(equal(true))
             }
             
             it("should have a initialized model") {
@@ -50,8 +51,6 @@ class GameModelSpec: QuickSpec {
             }
             
             it("should be able to record data") {
-                
-                expect(GameModel.delete()).to(equal(true))
                 
                 model?.isFavorite = true
                 
