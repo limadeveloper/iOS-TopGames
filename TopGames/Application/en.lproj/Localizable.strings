@@ -19,3 +19,7 @@
 "error.save.data" = "No possible to save the data: Error - 01";
 "error.data.noFound" = "Data no found";
 "error.noConnection" = "No connection";
+
+/* Alerts */
+"alert.button.done" = "Ok";
+"alert.button.orderByViewers" = "Order by viewers";

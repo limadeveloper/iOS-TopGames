@@ -16,8 +16,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var backgroundLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    private var configButtonItem = UIBarButtonItem()
     private let tabBar = TabBarController()
-    private let emptyValue = 0
+    
+    private let kEmptyValue = 0
+    private let kConfigButtonFontSize: CGFloat = 25
+    private let kConfigButtonRect = CGRect(x: 0, y: 0, width: 25, height: 25)
     
     let refreshControl = UIRefreshControl()
     let homeViewModel = HomeViewModel()
@@ -45,6 +49,31 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc private func configActions() {
+        let orderAction = UIAlertAction(title: LocalizedUtil.Text.alertButtonOrderByViewers, style: .default) { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.homeViewModel.models = strongSelf.homeViewModel.models?.orderByViewers()
+            strongSelf.collectionView.reloadData()
+        }
+        let dismissAction = UIAlertAction(title: LocalizedUtil.Text.alertButtonDone, style: .destructive, handler: nil)
+        AlertUtil.createAlert(
+            title: LocalizedUtil.Text.homeNavigationTitle,
+            style: UIDevice.current.userInterfaceIdiom == .pad ? .alert : .actionSheet,
+            actions: [orderAction, dismissAction],
+            target: self
+        )
+    }
+    
+    private func setConfigButton() {
+        let button = UIButton(frame: kConfigButtonRect)
+        button.titleLabel?.font = UIFont.icon(from: .FontAwesome, ofSize: kConfigButtonFontSize)
+        button.setTitle(String.fontAwesomeIcon(FontUtil.FontIcon.FontAwesome.cogs), for: .normal)
+        button.setTitleColor(ColorUtil.navigationTint, for: .normal)
+        button.addTarget(self, action: #selector(configActions), for: .touchUpInside)
+        configButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = configButtonItem
+    }
+    
     private func setCollectionView() {
         
         let layout = KTCenterFlowLayout()
@@ -65,6 +94,8 @@ class HomeViewController: UIViewController {
     private func updateUI() {
         
         navigationItem.title = LocalizedUtil.Text.homeNavigationTitle
+        
+        setConfigButton()
         
         backgroundLabel.text = LocalizedUtil.Text.errorNoConnection
         backgroundLabel.addGestureRecognizer(tapGesture)
@@ -130,7 +161,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let items = homeViewModel.models, items.count > emptyValue else { return }
+        guard let items = homeViewModel.models, items.count > kEmptyValue else { return }
         let lastIndex = items.count - 1
         if indexPath.item == lastIndex {
             loadData(with: homeViewModel.pageIndex) { [weak self] in
@@ -144,6 +175,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 // MARK: - HomeCellDelegate
 extension HomeViewController: HomeCellDelegate {
     func homeCell(_ homeCell: HomeCell, didSelect favoriteButton: UIButton) {
+        homeViewModel.models = homeViewModel.models?.checkFavorites()
         collectionView.reloadData()
     }
 }

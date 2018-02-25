@@ -110,7 +110,7 @@ extension GameModel {
             entity.locale = game?.locale
             entity.viewers = Int32(viewers)
             entity.channels = Int32(channels)
-            entity.isFavorite = entity.isFavorite ? entity.isFavorite : isFavorite ?? false
+            entity.isFavorite = isFavorite ?? entity.isFavorite
             
             dataManager.record(entity.managedObjectContext) { error in
                 if error == nil, let gameId = self.game?.id {
@@ -142,6 +142,19 @@ extension GameModel {
                 } else { record() }
             } else { record() }
         }
+    }
+    
+    func checkFavorite() -> GameModel {
+        guard let gameId = game?.id else { return self }
+        let recorded = GameModel.fetchGameModel(by: gameId)
+        self.isFavorite = recorded?.isFavorite
+        return self
+    }
+    
+    func deleteObjectData() -> Error? {
+        let predicate = dataManager.predicate(id: game?.id, key: AttributeName.id, type: .equal)
+        let error = dataManager.delete(entity: .game, predicate: predicate)
+        return error
     }
     
     static func delete() -> Bool? {

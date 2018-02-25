@@ -13,6 +13,10 @@ struct FontUtil {
     }
     
     struct FontIcon {
-        static let heart = "heart"
+        
+        struct FontAwesome {
+            static let heart = "heart"
+            static let cogs = "cogs"
+        }
     }
 }

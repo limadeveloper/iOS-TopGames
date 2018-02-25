@@ -152,7 +152,7 @@ extension Collection {
     
     func orderByViewers() -> [GameModel] {
         let models = (self as? [GameModel] ?? [])
-        let result = models.sorted { $0.viewers < $1.viewers }
+        let result = models.sorted { $0.viewers > $1.viewers }
         return result
     }
     
@@ -164,8 +164,19 @@ extension Collection {
     func toModels() -> [GameModel]? {
         var result = [GameModel]()
         for item in self {
-            guard let model = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted).toModel(), let obj = model else { continue }
+            guard let model = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted).toModel(), let obj = model?.checkFavorite() else { continue }
             result.append(obj)
+        }
+        return result
+    }
+    
+    func checkFavorites() -> [GameModel]? {
+        let models = self as? [GameModel]
+        guard let items = models, items.count > 0 else { return models }
+        var result = [GameModel]()
+        for model in items {
+            let item = model.checkFavorite()
+            result.append(item)
         }
         return result
     }
