@@ -14,6 +14,8 @@ class TabBarController: UITabBarController {
     let homeIndex = 0
     let favoritesIndex = 1
     
+    var defaultTabBarRect: CGRect?
+    
     // MARK: - LifeCyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,8 @@ class TabBarController: UITabBarController {
     
     // MARK: - Actions
     private func updateUI() {
+        
+        defaultTabBarRect = tabBar.frame
         
         guard let items = tabBar.items else { return }
         
@@ -36,5 +40,25 @@ class TabBarController: UITabBarController {
         }
         
         selectedIndex = homeIndex
+    }
+}
+
+extension UITabBarController {
+    
+    func hideTabBarAnimated(hide: Bool, animateDuration: TimeInterval = 0.3) {
+        let tabBarPositionY = tabBar.frame.height * 2
+        UIView.animate(withDuration: animateDuration) {
+            if hide {
+                self.tabBar.transform = CGAffineTransform(translationX: 0, y: tabBarPositionY)
+                self.tabBar.isHidden = true
+            } else {
+                self.tabBar.isHidden = false
+                self.tabBar.transform = .identity
+            }
+        }
+    }
+    
+    func isTabBarVisible() -> Bool {
+        return !tabBar.isHidden
     }
 }

@@ -13,7 +13,8 @@
 "favorites.navigation.title" = "Favoritos";
 
 /* Details */
-"details.viewersLabel.text" = "Visualizações: ";
+"details.navigation.title" = "Detalhes";
+"details.viewersLabel.text" = "Viewers: ";
 
 /* Error */
 "error.save.data" = "Não foi possível salvar os dados no momento: Erro - 01";

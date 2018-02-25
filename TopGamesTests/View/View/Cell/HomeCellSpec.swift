@@ -20,7 +20,7 @@ class HomeCellSpec: QuickSpec {
             var cell: HomeCell?
             var controller: HomeViewController?
             
-            beforeEach {
+            beforeSuite {
                 
                 controller = StoryboardUtil.homeNavigationViewController()?.viewControllers.last as? HomeViewController
                 controller?.loadViewIfNeeded()

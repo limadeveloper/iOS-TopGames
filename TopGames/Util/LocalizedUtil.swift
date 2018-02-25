@@ -13,6 +13,7 @@ struct LocalizedUtil {
     struct Text {
         static let homeNavigationTitle = "home.navigation.title".localized()
         static let favoritesNavigationTitle = "favorites.navigation.title".localized()
+        static let detailsNavigationTitle = "details.navigation.title".localized()
         static let detailsViewersLabelText = "details.viewersLabel.text".localized()
         static let errorSaveData = "error.save.data".localized()
         static let errorDataNoFound = "error.data.noFound".localized()
