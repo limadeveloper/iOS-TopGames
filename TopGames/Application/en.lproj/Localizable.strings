@@ -13,6 +13,7 @@
 "favorites.navigation.title" = "Favorites";
 
 /* Details */
+"details.navigation.title" = "Details";
 "details.viewersLabel.text" = "Viewers: ";
 
 /* Error */

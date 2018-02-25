@@ -38,8 +38,18 @@ class HomeViewController: UIViewController {
         reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        searchController?.isActive = false
         
         if let searchBar = searchController?.searchBar, searchEnable {
             searchBarCancelButtonClicked(searchBar)
@@ -166,6 +176,15 @@ class HomeViewController: UIViewController {
             completion?()
         }
     }
+    
+    private func reloadDataAfterClickOnFavoriteButton() {
+        if searchEnable {
+            homeViewModel.searchModels = homeViewModel.searchModels?.checkFavorites()
+        } else {
+            homeViewModel.models = homeViewModel.models?.checkFavorites()
+        }
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - UITabBarDelegate
@@ -204,11 +223,21 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        searchController?.isActive = false
+        
+        guard let detailViewController = StoryboardUtil.detailViewController(), let data = searchEnable ? homeViewModel.searchModels : homeViewModel.models else { return }
+        
+        detailViewController.delegate = self
+        detailViewController.detailViewModel = DetailViewModel(model: data[indexPath.item])
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = nil
+        }
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let items = homeViewModel.models, items.count > kEmptyValue else { return }
+        guard let items = homeViewModel.models, items.count > kEmptyValue, !searchEnable else { return }
         let lastIndex = items.count - 1
         if indexPath.item == lastIndex {
             loadData(with: homeViewModel.pageIndex) { [weak self] in
@@ -222,12 +251,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 // MARK: - HomeCellDelegate
 extension HomeViewController: HomeCellDelegate {
     func homeCell(_ homeCell: HomeCell, didSelect favoriteButton: UIButton) {
-        if searchEnable {
-            homeViewModel.searchModels = homeViewModel.searchModels?.checkFavorites()
-        } else {
-            homeViewModel.models = homeViewModel.models?.checkFavorites()
-        }
-        collectionView.reloadData()
+        reloadDataAfterClickOnFavoriteButton()
+    }
+}
+
+// MARK: - DetailViewControllerDelegate
+extension HomeViewController: DetailViewControllerDelegate {
+    func detailViewController(_ detailViewController: DetailViewController, didSelect favoriteButton: UIButton) {
+        reloadDataAfterClickOnFavoriteButton()
     }
 }
 
