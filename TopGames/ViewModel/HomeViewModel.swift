@@ -17,6 +17,7 @@ class HomeViewModel: NSObject {
     let apiClient = APIClient()
     let alpha: (min: Float, max: Float) = (0, 1)
     var models: [GameModel]?
+    var searchModels: [GameModel]?
     var collectionAlpha: Float = 0
     var pageIndex = 0
     

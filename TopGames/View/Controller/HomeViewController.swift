@@ -22,17 +22,29 @@ class HomeViewController: UIViewController {
     private let kEmptyValue = 0
     private let kConfigButtonFontSize: CGFloat = 25
     private let kConfigButtonRect = CGRect(x: 0, y: 0, width: 25, height: 25)
+    private let kCollectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.33, 0.3))
+    private let kCellName = "\(HomeCell.self)"
+    private let kSearchBarTextFieldKey = "searchField"
     
     let refreshControl = UIRefreshControl()
     let homeViewModel = HomeViewModel()
-    let collectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.33, 0.3))
-    let cellName = "\(HomeCell.self)"
+    var searchEnable = false
+    var searchController: UISearchController?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let searchBar = searchController?.searchBar, searchEnable {
+            searchBarCancelButtonClicked(searchBar)
+            clearSearch()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -47,6 +59,19 @@ class HomeViewController: UIViewController {
             guard let strongSelf = self else { return }
             strongSelf.collectionView.reloadData()
         }
+    }
+    
+    private func updateUI() {
+        
+        navigationItem.title = LocalizedUtil.Text.homeNavigationTitle
+        
+        setConfigButton()
+        setSearch()
+        
+        backgroundLabel.text = LocalizedUtil.Text.errorNoConnection
+        backgroundLabel.addGestureRecognizer(tapGesture)
+        
+        setCollectionView()
     }
     
     @objc private func configActions() {
@@ -74,36 +99,54 @@ class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItem = configButtonItem
     }
     
+    private func setSearch() {
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.loadViewIfNeeded()
+        searchController?.searchResultsUpdater = self
+        searchController?.delegate = self
+        searchController?.dimsBackgroundDuringPresentation = false
+        searchController?.searchBar.sizeToFit()
+        searchController?.searchBar.barStyle = .black
+        searchController?.searchBar.tintColor = ColorUtil.navigationTint
+        searchController?.searchBar.delegate = self
+        
+        if let textField = searchController?.searchBar.value(forKey: kSearchBarTextFieldKey) as? UITextField {
+            textField.keyboardAppearance = .dark
+            textField.textColor = ColorUtil.navigationTint
+        }
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else if let searchBar = searchController?.searchBar {
+            collectionView.addSubview(searchBar)
+        }
+    }
+    
+    private func clearSearch() {
+        homeViewModel.searchModels = []
+        searchEnable = false
+        collectionView.reloadData()
+    }
+    
     private func setCollectionView() {
         
+        refreshControl.tintColor = ColorUtil.lightGray
+        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        
         let layout = KTCenterFlowLayout()
-        layout.minimumInteritemSpacing = collectionlayout.minInteritemSpacing
-        layout.minimumLineSpacing = collectionlayout.minLineSpacing
+        layout.minimumInteritemSpacing = kCollectionlayout.minInteritemSpacing
+        layout.minimumLineSpacing = kCollectionlayout.minLineSpacing
         
         layout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width * collectionlayout.size.percentWidth,
-            height: UIScreen.main.bounds.height * collectionlayout.size.percentHeight
+            width: UIScreen.main.bounds.width * kCollectionlayout.size.percentWidth,
+            height: UIScreen.main.bounds.height * kCollectionlayout.size.percentHeight
         )
         
         collectionView.collectionViewLayout = layout
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.refreshControl = refreshControl
-    }
-    
-    private func updateUI() {
-        
-        navigationItem.title = LocalizedUtil.Text.homeNavigationTitle
-        
-        setConfigButton()
-        
-        backgroundLabel.text = LocalizedUtil.Text.errorNoConnection
-        backgroundLabel.addGestureRecognizer(tapGesture)
-        
-        refreshControl.tintColor = ColorUtil.lightGray
-        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-        
-        setCollectionView()
     }
     
     private func loadData(with pageIndex: Int = 0, completion: (() -> Void)?) {
@@ -144,20 +187,24 @@ extension HomeViewController: UITabBarDelegate {
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (homeViewModel.models ?? []).count
+        let data = searchEnable ? homeViewModel.searchModels : homeViewModel.models
+        return (data ?? []).count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? HomeCell
-        if let selectedModel = homeViewModel.models?[indexPath.item] {
-            cell?.homeCellViewModel = HomeCellViewModel(model: selectedModel)
-            cell?.delegate = self
-        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellName, for: indexPath) as? HomeCell
+        
+        guard let data = searchEnable ? homeViewModel.searchModels : homeViewModel.models else { return cell ?? UICollectionViewCell() }
+        
+        cell?.homeCellViewModel = HomeCellViewModel(model: data[indexPath.item])
+        cell?.delegate = self
+        
         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        searchController?.isActive = false
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -175,7 +222,52 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 // MARK: - HomeCellDelegate
 extension HomeViewController: HomeCellDelegate {
     func homeCell(_ homeCell: HomeCell, didSelect favoriteButton: UIButton) {
-        homeViewModel.models = homeViewModel.models?.checkFavorites()
+        if searchEnable {
+            homeViewModel.searchModels = homeViewModel.searchModels?.checkFavorites()
+        } else {
+            homeViewModel.models = homeViewModel.models?.checkFavorites()
+        }
         collectionView.reloadData()
+    }
+}
+
+// MARK: - UISearchBarDelegate, UISearchControllerDelegate and UISearchResultsUpdating
+extension HomeViewController: UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        homeViewModel.searchModels = []
+        
+        guard let searchText = searchController.searchBar.text?.lowercased(), !searchText.isEmpty else { return }
+        
+        for model in (homeViewModel.models ?? []) {
+            if (model.game?.name.lowercased() ?? "").contains(searchText) {
+                homeViewModel.searchModels?.append(model)
+            }
+        }
+        
+        searchEnable = searchController.searchBar.showsCancelButton
+        collectionView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+        
+        collectionView.allowsSelection = true
+        clearSearch()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        collectionView.allowsSelection = true
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        clearSearch()
+        collectionView.allowsSelection = false
+        searchBar.showsCancelButton = true
     }
 }
