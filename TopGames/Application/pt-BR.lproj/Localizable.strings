@@ -19,3 +19,7 @@
 "error.save.data" = "Não foi possível salvar os dados no momento: Erro - 01";
 "error.data.noFound" = "Dados não encontrados";
 "error.noConnection" = "Sem conexão";
+
+/* Alerts */
+"alert.button.done" = "Ok";
+"alert.button.orderByViewers" = "Ordenar por visualizações";

@@ -8,6 +8,7 @@ disabled_rules: # rule identifiers to exclude from running
   - large_tuple
   - valid_ibinspectable
   - function_parameter_count
+  - nesting
 
 opt_in_rules: # some rules are only opt-in
   # - empty_count

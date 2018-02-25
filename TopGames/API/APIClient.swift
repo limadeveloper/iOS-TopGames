@@ -14,6 +14,7 @@ struct APIClient {
     // MARK: - Properties
     private let api = "https://api.twitch.tv/kraken/"
     private let initialPage = 0
+    private let limitValue = 20
     
     // MARK: - Struct and Enums
     enum EndPoint: String {
@@ -22,7 +23,12 @@ struct APIClient {
     
     struct ParameterKey {
         static let offset = "offset"
+        static let limit = "limit"
+    }
+    
+    struct KeyValue {
         static let top = "top"
+        static let viewers = "viewers"
     }
     
     struct Header {
@@ -33,6 +39,7 @@ struct APIClient {
     }
     
     // MARK: - Actions
+    
     /// Run this block to fetch top games
     ///
     ///     apiClient.fetchGames(page: pageIndex) { [weak self] (games, error) in
@@ -46,7 +53,11 @@ struct APIClient {
     func fetchTopGames(page: Int, completion: (([Any]?, Error?) -> Void)?) {
         
         let url = URL(string: api + EndPoint.topGames.rawValue)!
-        let parameters: Parameters = [ParameterKey.offset: page]
+        
+        let parameters: Parameters = [
+            ParameterKey.offset: page,
+            ParameterKey.limit: limitValue
+        ]
         
         let headers: HTTPHeaders = [
             Header.acceptKey: Header.acceptValue,
@@ -54,16 +65,29 @@ struct APIClient {
         ]
         
         Alamofire.request(url, method: .get, parameters: parameters, headers: headers).validate().responseJSON { response in
+            
             let result = try? JSONSerialization.jsonObject(with: response.data ?? Data(), options: .allowFragments) as? [AnyHashable: Any]
-            let topGames = result??[ParameterKey.top] as? [Any]
+            var topGames = result??[KeyValue.top] as? [Any]
+            
+            if let games = topGames as? [[String: Any]] {
+                topGames = games.sorted { ($0[KeyValue.viewers] as? Int ?? 0) > ($1[KeyValue.viewers] as? Int ?? 0) }
+            }
+            
             completion?(topGames, response.error)
         }
     }
     
+    /// Check network connection
+    ///
+    /// - Returns: a boolean value about internet connection
     func isConnectedToInternet() -> Bool {
         return NetworkReachabilityManager()?.isReachable ?? false
     }
     
+    /// Fetch local JSON file
+    ///
+    /// - Parameter file: JSON file name
+    /// - Returns: JSON collection data object result
     func fetchJSON(from file: String) -> Any? {
         guard let path = Bundle.main.path(forResource: file, ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else { return nil }
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments)

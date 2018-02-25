@@ -17,6 +17,8 @@ struct LocalizedUtil {
         static let errorSaveData = "error.save.data".localized()
         static let errorDataNoFound = "error.data.noFound".localized()
         static let errorNoConnection = "error.noConnection".localized()
+        static let alertButtonDone = "alert.button.done".localized()
+        static let alertButtonOrderByViewers = "alert.button.orderByViewers".localized()
     }
 }
 

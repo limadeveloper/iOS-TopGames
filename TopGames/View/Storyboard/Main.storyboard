@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PEM-SZ-aBH">
-                                <rect key="frame" x="0.0" y="140" width="375" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="0.1647058824" green="0.15686274510000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xGz-Vz-cmY">
                                     <size key="itemSize" width="154" height="213"/>
@@ -63,6 +63,20 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-Sd-CEN">
+                                                    <rect key="frame" x="116" y="8" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="f5b-XO-hAG"/>
+                                                        <constraint firstAttribute="width" constant="30" id="h26-7U-qbq"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="0.92549019610000005" green="0.1529411765" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="markFavoriteWithSender:" destination="hhS-M7-VPf" eventType="touchUpInside" id="kYf-1m-FFY"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.066666666669999999" green="0.074509803920000006" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,12 +84,15 @@
                                             <constraint firstItem="Gng-8h-0CU" firstAttribute="top" secondItem="3h1-nk-tTM" secondAttribute="bottom" constant="8" id="Chm-fo-bJc"/>
                                             <constraint firstItem="Gng-8h-0CU" firstAttribute="leading" secondItem="hhS-M7-VPf" secondAttribute="leading" constant="8" id="Glm-Ox-GNJ"/>
                                             <constraint firstItem="3h1-nk-tTM" firstAttribute="top" secondItem="hhS-M7-VPf" secondAttribute="top" id="KUo-qx-iC1"/>
+                                            <constraint firstAttribute="trailing" secondItem="gpg-Sd-CEN" secondAttribute="trailing" constant="8" id="SRk-Pe-gcF"/>
+                                            <constraint firstItem="gpg-Sd-CEN" firstAttribute="top" secondItem="hhS-M7-VPf" secondAttribute="top" constant="8" id="d1V-90-Rzu"/>
                                             <constraint firstAttribute="bottom" secondItem="Gng-8h-0CU" secondAttribute="bottom" constant="8" id="d5o-Km-Ja7"/>
                                             <constraint firstAttribute="trailing" secondItem="Gng-8h-0CU" secondAttribute="trailing" constant="8" id="j2Y-up-fbI"/>
                                             <constraint firstAttribute="trailing" secondItem="3h1-nk-tTM" secondAttribute="trailing" id="vbk-r4-7ge"/>
                                             <constraint firstItem="3h1-nk-tTM" firstAttribute="leading" secondItem="hhS-M7-VPf" secondAttribute="leading" id="wv6-dL-hK2"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="gpg-Sd-CEN" id="c3S-UA-A4E"/>
                                             <outlet property="imageView" destination="3h1-nk-tTM" id="1Uu-FA-7PE"/>
                                             <outlet property="titleLabel" destination="Gng-8h-0CU" id="6Wp-g4-dE1"/>
                                         </connections>
@@ -88,7 +105,7 @@
                             <constraint firstAttribute="trailing" secondItem="PEM-SZ-aBH" secondAttribute="trailing" id="292-CK-MwT"/>
                             <constraint firstAttribute="bottom" secondItem="PEM-SZ-aBH" secondAttribute="bottom" id="NF6-hL-IUh"/>
                             <constraint firstItem="dtP-EQ-upH" firstAttribute="leading" secondItem="TnA-Ct-Bc0" secondAttribute="leading" constant="20" id="Qw1-Uv-UI7"/>
-                            <constraint firstItem="PEM-SZ-aBH" firstAttribute="top" secondItem="TnA-Ct-Bc0" secondAttribute="top" id="TmD-E7-Fyo"/>
+                            <constraint firstItem="PEM-SZ-aBH" firstAttribute="top" secondItem="Gab-Ds-AhB" secondAttribute="top" id="TmD-E7-Fyo"/>
                             <constraint firstItem="TnA-Ct-Bc0" firstAttribute="trailing" secondItem="dtP-EQ-upH" secondAttribute="trailing" constant="20" id="aWV-j5-Reg"/>
                             <constraint firstItem="PEM-SZ-aBH" firstAttribute="leading" secondItem="Gab-Ds-AhB" secondAttribute="leading" id="b6k-xb-0qN"/>
                             <constraint firstItem="dtP-EQ-upH" firstAttribute="centerX" secondItem="TnA-Ct-Bc0" secondAttribute="centerX" id="ptY-cv-CVF"/>
@@ -184,7 +201,7 @@
         <!--Top Games-->
         <scene sceneID="DWU-Ma-yTf">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="gea-9H-Cbd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="gea-9H-Cbd" customClass="NavigationController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Top Games" image="icon_home" selectedImage="icon_home_black" id="Sac-DA-Lz0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="Bs2-Av-QfZ">
@@ -215,6 +232,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J7Q-WE-qdD" customClass="TabBarController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Kfj-vv-AKm">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,7 +265,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aUD-Hf-mrw">
-                                <rect key="frame" x="0.0" y="140" width="375" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="0.1647058824" green="0.15686274510000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nlj-Md-Gfc">
                                     <size key="itemSize" width="154" height="213"/>
@@ -276,19 +294,36 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubi-d9-HIC">
+                                                    <rect key="frame" x="116" y="8" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="FJH-cy-xsC"/>
+                                                        <constraint firstAttribute="width" constant="30" id="v0O-DO-Ijc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="0.92549019610000005" green="0.1529411765" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="markFavoriteWithSender:" destination="OUx-BZ-J9h" eventType="touchUpInside" id="1Yp-Fp-Xx6"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.066666666669999999" green="0.074509803920000006" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="uMF-Tu-E3J" firstAttribute="top" secondItem="IRj-Hy-4eR" secondAttribute="bottom" constant="8" id="EA9-wq-gAp"/>
+                                            <constraint firstItem="ubi-d9-HIC" firstAttribute="top" secondItem="OUx-BZ-J9h" secondAttribute="top" constant="8" id="Hmo-wq-qfy"/>
                                             <constraint firstAttribute="bottom" secondItem="uMF-Tu-E3J" secondAttribute="bottom" constant="8" id="UZK-BB-nu9"/>
                                             <constraint firstAttribute="trailing" secondItem="uMF-Tu-E3J" secondAttribute="trailing" constant="8" id="bsp-yT-8wg"/>
+                                            <constraint firstAttribute="trailing" secondItem="ubi-d9-HIC" secondAttribute="trailing" constant="8" id="cBr-lC-YQd"/>
                                             <constraint firstItem="uMF-Tu-E3J" firstAttribute="leading" secondItem="OUx-BZ-J9h" secondAttribute="leading" constant="8" id="cMB-oe-FEM"/>
                                             <constraint firstAttribute="trailing" secondItem="IRj-Hy-4eR" secondAttribute="trailing" id="owy-FZ-cgq"/>
                                             <constraint firstItem="IRj-Hy-4eR" firstAttribute="leading" secondItem="OUx-BZ-J9h" secondAttribute="leading" id="pv8-70-LFD"/>
                                             <constraint firstItem="IRj-Hy-4eR" firstAttribute="top" secondItem="OUx-BZ-J9h" secondAttribute="top" id="vEB-en-9Dm"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="ubi-d9-HIC" id="pRa-FJ-DM0"/>
                                             <outlet property="imageView" destination="IRj-Hy-4eR" id="tuf-dg-roP"/>
                                             <outlet property="titleLabel" destination="uMF-Tu-E3J" id="WbS-8T-21H"/>
                                         </connections>
@@ -303,7 +338,7 @@
                             <constraint firstItem="aUD-Hf-mrw" firstAttribute="leading" secondItem="8X8-h1-bp5" secondAttribute="leading" id="P5n-Ma-tfb"/>
                             <constraint firstAttribute="bottom" secondItem="aUD-Hf-mrw" secondAttribute="bottom" id="jy7-B3-iU3"/>
                             <constraint firstItem="7a9-Q0-YEd" firstAttribute="centerY" secondItem="xXg-K5-y3C" secondAttribute="centerY" constant="-80" id="osf-pP-ycZ"/>
-                            <constraint firstItem="aUD-Hf-mrw" firstAttribute="top" secondItem="xXg-K5-y3C" secondAttribute="top" id="uNm-Bo-Pyl"/>
+                            <constraint firstItem="aUD-Hf-mrw" firstAttribute="top" secondItem="8X8-h1-bp5" secondAttribute="top" id="uNm-Bo-Pyl"/>
                             <constraint firstItem="xXg-K5-y3C" firstAttribute="trailing" secondItem="7a9-Q0-YEd" secondAttribute="trailing" constant="20" id="wQ7-Wv-FPE"/>
                             <constraint firstAttribute="trailing" secondItem="aUD-Hf-mrw" secondAttribute="trailing" id="xEa-fx-ue6"/>
                         </constraints>
@@ -329,7 +364,7 @@
         <!--Favorites-->
         <scene sceneID="Zsm-Jj-Iel">
             <objects>
-                <navigationController storyboardIdentifier="FavoritesNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="deZ-kD-Xcn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FavoritesNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="deZ-kD-Xcn" customClass="NavigationController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="icon_star" selectedImage="icon_star_black" id="Tt5-O4-b0O"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="mG2-Ah-an0">
