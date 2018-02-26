@@ -1,19 +1,17 @@
 //
-//  APIClient.swift
-//  TopGames
+//  WidgetAPIClient.swift
+//  Widget
 //
-//  Created by John Lima on 23/02/18.
+//  Created by John Lima on 26/02/18.
 //  Copyright © 2018 limadeveloper. All rights reserved.
 //
 
 import Foundation
-import Alamofire
 
-struct APIClient {
+struct WidgetAPIClient {
     
     // MARK: - Properties
     private let api = "https://api.twitch.tv/kraken/"
-    private let initialPage = 0
     
     // MARK: - Struct and Enums
     enum EndPoint: String {
@@ -37,51 +35,45 @@ struct APIClient {
         static let clientIdValue = "5f1mxwqmosk9lsmwoglmz7o6icahcq"
     }
     
-    // MARK: - Actions
-    
-    /// Run this block to fetch top games
-    ///
-    ///     apiClient.fetchGames(page: pageIndex) { [weak self] (games, error) in
-    ///         print(games)
-    ///     }
-    ///
-    /// - Parameters:
-    ///   - endPoint: end point using to fetch the games
-    ///   - page: page number or offset
-    ///   - limitValue: the number of results
-    ///   - completion: handle for results
     func fetchTopGames(page: Int, limitValue: Int = 20, completion: (([Any]?, Error?) -> Void)?) {
         
         let url = URL(string: api + EndPoint.topGames.rawValue)!
         
-        let parameters: Parameters = [
+        let parameters = [
             ParameterKey.offset: page,
             ParameterKey.limit: limitValue
         ]
         
-        let headers: HTTPHeaders = [
+        let headers = [
             Header.acceptKey: Header.acceptValue,
             Header.clientIdKey: Header.clientIdValue
         ]
         
-        Alamofire.request(url, method: .get, parameters: parameters, headers: headers).validate().responseJSON { response in
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        urlRequest.allHTTPHeaderFields = headers
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, _, error in
             
-            let result = try? JSONSerialization.jsonObject(with: response.data ?? Data(), options: .allowFragments) as? [AnyHashable: Any]
+            guard let data = data, error == nil else { completion?(nil, error); return }
+            
+            let result = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [AnyHashable: Any]
             var topGames = result??[KeyValue.top] as? [Any]
             
             if let games = topGames as? [[String: Any]] {
                 topGames = games.sorted { ($0[KeyValue.viewers] as? Int ?? 0) > ($1[KeyValue.viewers] as? Int ?? 0) }
             }
             
-            completion?(topGames, response.error)
-        }
+            completion?(topGames, error)
+            
+        }.resume()
     }
     
-    /// Check network connection
-    ///
-    /// - Returns: a boolean value about internet connection
-    func isConnectedToInternet() -> Bool {
-        return NetworkReachabilityManager()?.isReachable ?? false
+    static func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+        }.resume()
     }
     
     /// Fetch local JSON file
