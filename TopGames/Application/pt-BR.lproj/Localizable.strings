@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  TopGames
+
+  Created by John Lima on 22/02/18.
+  Copyright © 2018 limadeveloper. All rights reserved.
+*/
+
+/* Home */
+"home.navigation.title" = "Top Jogos";
+
+/* Favorites */
+"favorites.navigation.title" = "Favoritos";
+
+/* Details */
+"details.navigation.title" = "Detalhes";
+"details.viewersLabel.text" = "Viewers: ";
+
+/* Error */
+"error.save.data" = "Não foi possível salvar os dados no momento: Erro - 01";
+"error.data.noFound" = "Dados não encontrados";
+"error.data.noData" = "Sem dados";
+"error.noConnection" = "Sem internet";
+"error.checkConnection" = "Verifique sua conexão com a internet e tente novamente";
+
+/* Alerts */
+"alert.button.done" = "Ok";
+"alert.button.orderByViewers" = "Ordenar por visualizações";

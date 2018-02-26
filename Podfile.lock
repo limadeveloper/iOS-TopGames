@@ -1,0 +1,31 @@
+PODS:
+  - Alamofire (4.6.0)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
+  - KTCenterFlowLayout (1.3.1)
+  - Nimble (7.0.3)
+  - Quick (1.2.0)
+  - SwiftIconFont (2.7.3)
+  - SwiftLint (0.25.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.6)
+  - AlamofireImage (~> 3.3)
+  - KTCenterFlowLayout (~> 1.3)
+  - Nimble (~> 7.0)
+  - Quick (~> 1.2)
+  - SwiftIconFont
+  - SwiftLint (~> 0.24)
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  KTCenterFlowLayout: 6e02b50ab2bd865025ae82fe266ed13b6d9eaf97
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SwiftIconFont: ebd8ee931a1e7072b61a87aec53f3a0786ef7f2b
+  SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
+
+PODFILE CHECKSUM: 15db3c2d915dcd0bc4119c12d1974153ec108128
+
+COCOAPODS: 1.4.0
