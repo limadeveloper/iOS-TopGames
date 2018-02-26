@@ -22,6 +22,7 @@ class FavoritesViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     let cellName = "\(HomeCell.self)"
     let collectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.33, 0.3))
+    let collectionlayoutiPad: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.165, 0.35))
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -74,13 +75,15 @@ class FavoritesViewController: UIViewController {
         refreshControl.tintColor = ColorUtil.lightGray
         refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad
         let layout = KTCenterFlowLayout()
-        layout.minimumInteritemSpacing = collectionlayout.minInteritemSpacing
-        layout.minimumLineSpacing = collectionlayout.minLineSpacing
+        
+        layout.minimumInteritemSpacing = isIpad ? collectionlayoutiPad.minInteritemSpacing : collectionlayout.minInteritemSpacing
+        layout.minimumLineSpacing = isIpad ? collectionlayoutiPad.minLineSpacing : collectionlayout.minLineSpacing
         
         layout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width * collectionlayout.size.percentWidth,
-            height: UIScreen.main.bounds.height * collectionlayout.size.percentHeight
+            width: UIScreen.main.bounds.width * (isIpad ? collectionlayoutiPad.size.percentWidth : collectionlayout.size.percentWidth),
+            height: UIScreen.main.bounds.height * (isIpad ? collectionlayoutiPad.size.percentHeight : collectionlayout.size.percentHeight)
         )
         
         collectionView.collectionViewLayout = layout

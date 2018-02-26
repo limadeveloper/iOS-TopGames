@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     
     let cellName = "\(HomeCell.self)"
     let collectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.33, 0.3))
+    let collectionlayoutiPad: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (percentWidth: CGFloat, percentHeight: CGFloat)) = (1, 1, (0.165, 0.35))
     let refreshControl = UIRefreshControl()
     let homeViewModel = HomeViewModel()
     var searchController: UISearchController?
@@ -52,12 +53,12 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        searchController?.isActive = false
-        
         if let searchBar = searchController?.searchBar, searchEnable {
             searchBarCancelButtonClicked(searchBar)
             clearSearch()
         }
+        
+        searchController?.isActive = false
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -155,13 +156,15 @@ class HomeViewController: UIViewController {
         refreshControl.tintColor = ColorUtil.lightGray
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad
         let layout = KTCenterFlowLayout()
-        layout.minimumInteritemSpacing = collectionlayout.minInteritemSpacing
-        layout.minimumLineSpacing = collectionlayout.minLineSpacing
+        
+        layout.minimumInteritemSpacing = isIpad ? collectionlayoutiPad.minInteritemSpacing : collectionlayout.minInteritemSpacing
+        layout.minimumLineSpacing = isIpad ? collectionlayoutiPad.minLineSpacing : collectionlayout.minLineSpacing
         
         layout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width * collectionlayout.size.percentWidth,
-            height: UIScreen.main.bounds.height * collectionlayout.size.percentHeight
+            width: UIScreen.main.bounds.width * (isIpad ? collectionlayoutiPad.size.percentWidth : collectionlayout.size.percentWidth),
+            height: UIScreen.main.bounds.height * (isIpad ? collectionlayoutiPad.size.percentHeight : collectionlayout.size.percentHeight)
         )
         
         collectionView.collectionViewLayout = layout
@@ -305,6 +308,7 @@ extension HomeViewController: UISearchBarDelegate, UISearchControllerDelegate, U
         
         collectionView.allowsSelection = true
         clearSearch()
+        tabBarController?.hideTabBarAnimated(hide: false)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -316,5 +320,6 @@ extension HomeViewController: UISearchBarDelegate, UISearchControllerDelegate, U
         clearSearch()
         collectionView.allowsSelection = false
         searchBar.showsCancelButton = true
+        tabBarController?.hideTabBarAnimated(hide: true)
     }
 }
