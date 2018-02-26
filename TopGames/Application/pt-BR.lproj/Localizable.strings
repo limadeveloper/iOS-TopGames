@@ -19,7 +19,9 @@
 /* Error */
 "error.save.data" = "Não foi possível salvar os dados no momento: Erro - 01";
 "error.data.noFound" = "Dados não encontrados";
-"error.noConnection" = "Sem conexão";
+"error.data.noData" = "Sem dados";
+"error.noConnection" = "Sem internet";
+"error.checkConnection" = "Verifique sua conexão com a internet e tente novamente";
 
 /* Alerts */
 "alert.button.done" = "Ok";

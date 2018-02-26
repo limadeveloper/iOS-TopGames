@@ -43,6 +43,7 @@ class TabBarController: UITabBarController {
     }
 }
 
+// MARK: - Extensions
 extension UITabBarController {
     
     func hideTabBarAnimated(hide: Bool, animateDuration: TimeInterval = 0.3) {

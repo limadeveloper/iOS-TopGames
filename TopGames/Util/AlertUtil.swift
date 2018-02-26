@@ -32,4 +32,12 @@ struct AlertUtil {
             target?.present(alert, animated: true, completion: nil)
         }
     }
+    
+    static func showAlertWarningAboutInternetConnection(in target: UIViewController) -> UIAlertController {
+        let alert = UIAlertController(title: "☹︎ \(LocalizedUtil.Text.errorNoConnection)", message: LocalizedUtil.Text.errorCheckConnection, preferredStyle: UIDevice.current.userInterfaceIdiom == .pad ? .alert : .actionSheet)
+        DispatchQueue.main.async {
+            target.present(alert, animated: true, completion: nil)
+        }
+        return alert
+    }
 }

@@ -16,6 +16,10 @@ struct StoryboardUtil {
         return main.instantiateViewController(withIdentifier: "HomeNavigationViewController") as? UINavigationController
     }
     
+    static func favoritesNavigationViewController() -> UINavigationController? {
+        return main.instantiateViewController(withIdentifier: "FavoritesNavigationViewController") as? UINavigationController
+    }
+    
     static func detailViewController() -> DetailViewController? {
         return main.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
     }

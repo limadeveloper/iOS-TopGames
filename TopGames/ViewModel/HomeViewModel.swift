@@ -18,6 +18,7 @@ class HomeViewModel: NSObject {
     let alpha: (min: Float, max: Float) = (0, 1)
     var models: [GameModel]?
     var searchModels: [GameModel]?
+    var favoritesModels: [GameModel]?
     var collectionAlpha: Float = 0
     var pageIndex = 0
     
@@ -56,5 +57,9 @@ class HomeViewModel: NSObject {
         } else {
             noConnected()
         }
+    }
+    
+    func loadFavoriteGames() {
+        favoritesModels = GameModel.fetchResult().games?.filter({ $0.isFavorite ?? false })
     }
 }
