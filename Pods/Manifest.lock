@@ -14,7 +14,7 @@ DEPENDENCIES:
   - KTCenterFlowLayout (~> 1.3)
   - Nimble (~> 7.0)
   - Quick (~> 1.2)
-  - SwiftIconFont
+  - SwiftIconFont (~> 2.7)
   - SwiftLint (~> 0.24)
 
 SPEC CHECKSUMS:
@@ -26,6 +26,6 @@ SPEC CHECKSUMS:
   SwiftIconFont: ebd8ee931a1e7072b61a87aec53f3a0786ef7f2b
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
 
-PODFILE CHECKSUM: 15db3c2d915dcd0bc4119c12d1974153ec108128
+PODFILE CHECKSUM: 333096320fa69a013c2a7a362ed91919eb698d6f
 
 COCOAPODS: 1.4.0
