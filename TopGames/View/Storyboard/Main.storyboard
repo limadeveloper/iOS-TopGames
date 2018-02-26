@@ -98,6 +98,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="hLg-Hk-KTH" id="vNo-7Z-wT3"/>
+                                    <outlet property="delegate" destination="hLg-Hk-KTH" id="Lpz-W5-K5q"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.15686274510000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -250,7 +254,7 @@
         <!--Favorites-->
         <scene sceneID="2Cy-Dz-1qX">
             <objects>
-                <viewController storyboardIdentifier="FavoritesViewController" id="fEa-td-hjC" customClass="HomeViewController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesViewController" id="fEa-td-hjC" customClass="FavoritesViewController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8X8-h1-bp5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,6 +333,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="fEa-td-hjC" id="5Vk-XM-cqe"/>
+                                    <outlet property="delegate" destination="fEa-td-hjC" id="5re-yZ-l8b"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.15686274510000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -348,13 +356,13 @@
                     <connections>
                         <outlet property="backgroundLabel" destination="7a9-Q0-YEd" id="DKj-3g-0BA"/>
                         <outlet property="collectionView" destination="aUD-Hf-mrw" id="Ur4-ub-xCy"/>
-                        <outlet property="tapGesture" destination="b7g-qb-gEG" id="a88-wA-0QD"/>
+                        <outlet property="tapGesture" destination="B6j-Va-iMq" id="31h-rS-q1o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDV-nG-hN1" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="B6j-Va-iMq">
                     <connections>
-                        <action selector="reloadData" destination="fEa-td-hjC" id="FxX-3v-ELk"/>
+                        <action selector="loadData" destination="fEa-td-hjC" id="QbS-nR-xcm"/>
                         <outlet property="delegate" destination="7a9-Q0-YEd" id="CMI-D7-uav"/>
                     </connections>
                 </tapGestureRecognizer>

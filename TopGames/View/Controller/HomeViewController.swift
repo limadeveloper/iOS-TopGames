@@ -16,10 +16,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var backgroundLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private let tabBar = TabBarController()
     private var configButtonItem = UIBarButtonItem()
+    private var alertWarningAboutConnection: UIAlertController?
     private var searchEnable = false
     
+    private let kTimeIntervalToDismissAlertWarning: TimeInterval = 5
     private let kEmptyValue = 0
     private let kConfigButtonFontSize: CGFloat = 25
     private let kConfigButtonRect = CGRect(x: 0, y: 0, width: 25, height: 25)
@@ -40,6 +41,8 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        reloadDataAfterClickOnFavoriteButton()
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -79,6 +82,11 @@ class HomeViewController: UIViewController {
         setSearch()
         
         backgroundLabel.text = LocalizedUtil.Text.errorNoConnection
+        
+        if homeViewModel.apiClient.isConnectedToInternet() {
+            backgroundLabel.text = LocalizedUtil.Text.errorNoData
+        }
+        
         backgroundLabel.addGestureRecognizer(tapGesture)
         
         setCollectionView()
@@ -90,7 +98,7 @@ class HomeViewController: UIViewController {
             strongSelf.homeViewModel.models = strongSelf.homeViewModel.models?.orderByViewers()
             strongSelf.collectionView.reloadData()
         }
-        let dismissAction = UIAlertAction(title: LocalizedUtil.Text.alertButtonDone, style: .destructive, handler: nil)
+        let dismissAction = UIAlertAction(title: LocalizedUtil.Text.alertButtonDone, style: .cancel, handler: nil)
         AlertUtil.createAlert(
             title: LocalizedUtil.Text.homeNavigationTitle,
             style: UIDevice.current.userInterfaceIdiom == .pad ? .alert : .actionSheet,
@@ -100,12 +108,15 @@ class HomeViewController: UIViewController {
     }
     
     private func setConfigButton() {
+        
         let button = UIButton(frame: kConfigButtonRect)
         button.titleLabel?.font = UIFont.icon(from: .FontAwesome, ofSize: kConfigButtonFontSize)
         button.setTitle(String.fontAwesomeIcon(FontUtil.FontIcon.FontAwesome.cogs), for: .normal)
         button.setTitleColor(ColorUtil.navigationTint, for: .normal)
         button.addTarget(self, action: #selector(configActions), for: .touchUpInside)
+        
         configButtonItem = UIBarButtonItem(customView: button)
+        
         navigationItem.rightBarButtonItem = configButtonItem
     }
     
@@ -154,16 +165,19 @@ class HomeViewController: UIViewController {
         )
         
         collectionView.collectionViewLayout = layout
-        collectionView.dataSource = self
-        collectionView.delegate = self
         collectionView.refreshControl = refreshControl
     }
     
     private func loadData(with pageIndex: Int = 0, completion: (() -> Void)?) {
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         homeViewModel.loadData(with: pageIndex) { [weak self] in
+            
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
             guard let strongSelf = self else { return }
+            
             if strongSelf.homeViewModel.collectionAlpha == strongSelf.homeViewModel.alpha.max {
                 strongSelf.view.bringSubview(toFront: strongSelf.collectionView)
                 strongSelf.backgroundLabel.isHidden = true
@@ -171,8 +185,10 @@ class HomeViewController: UIViewController {
                 strongSelf.view.bringSubview(toFront: strongSelf.backgroundLabel)
                 strongSelf.backgroundLabel.isHidden = false
             }
+            
             strongSelf.refreshControl.endRefreshing()
             strongSelf.collectionView.alpha = CGFloat(strongSelf.homeViewModel.collectionAlpha)
+            
             completion?()
         }
     }
@@ -184,21 +200,6 @@ class HomeViewController: UIViewController {
             homeViewModel.models = homeViewModel.models?.checkFavorites()
         }
         collectionView.reloadData()
-    }
-}
-
-// MARK: - UITabBarDelegate
-extension HomeViewController: UITabBarDelegate {
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        let selectedIndex = tabBar.items?.index(of: item) ?? self.tabBar.homeIndex
-        switch selectedIndex {
-        case self.tabBar.homeIndex:
-            navigationItem.title = LocalizedUtil.Text.homeNavigationTitle
-        case self.tabBar.favoritesIndex:
-            navigationItem.title = LocalizedUtil.Text.favoritesNavigationTitle
-        default:
-            break
-        }
     }
 }
 
@@ -237,9 +238,24 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
         guard let items = homeViewModel.models, items.count > kEmptyValue, !searchEnable else { return }
+        
         let lastIndex = items.count - 1
+        
         if indexPath.item == lastIndex {
+            
+            guard homeViewModel.apiClient.isConnectedToInternet() else {
+                alertWarningAboutConnection = AlertUtil.showAlertWarningAboutInternetConnection(in: self)
+                Timer.scheduledTimer(withTimeInterval: kTimeIntervalToDismissAlertWarning, repeats: false) { [weak self] timer in
+                    guard let strongSelf = self else { return }
+                    strongSelf.alertWarningAboutConnection?.dismiss(animated: true) {
+                        timer.invalidate()
+                    }
+                }
+                return
+            }
+            
             loadData(with: homeViewModel.pageIndex) { [weak self] in
                 guard let strongSelf = self else { return }
                 strongSelf.collectionView.reloadData()

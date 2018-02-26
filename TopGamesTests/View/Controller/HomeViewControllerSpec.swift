@@ -45,7 +45,6 @@ class HomeViewControllerSpec: QuickSpec {
             it("should have a background label about no internet connection") {
                 expect(controller?.backgroundLabel).toNot(beNil())
                 expect(controller?.backgroundLabel).to(beAnInstanceOf(UILabel.self))
-                expect(controller?.backgroundLabel?.text).to(equal(LocalizedUtil.Text.errorNoConnection))
                 expect(controller?.backgroundLabel?.font.fontName).to(equal(FontUtil.FontName.halo))
                 expect(controller?.backgroundLabel.gestureRecognizers?.count).to(beGreaterThan(0))
                 expect(controller?.backgroundLabel.gestureRecognizers?.last).to(beAnInstanceOf(UITapGestureRecognizer.self))
