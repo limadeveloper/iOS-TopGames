@@ -19,10 +19,5 @@ target 'TopGames' do
     pod 'Nimble', '~> 7.0'
 
   end
-
-  target 'Widget' do
-    inherit! :search_paths
-    # Pods for Widget
-  end
-
+  
 end

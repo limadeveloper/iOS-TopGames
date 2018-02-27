@@ -15,15 +15,20 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private let cellName = "cell"
-    private let collectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (width: CGFloat, height: CGFloat)) = (1, 1, (50, 50))
+    private let collectionlayout: (minInteritemSpacing: CGFloat, minLineSpacing: CGFloat, size: (width: CGFloat, height: CGFloat)) = (12, 12, (75, 95))
+    private let sectionInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
     
-    private var widgetViewModel: TodayViewModel?
+    private var todayViewModel = TodayViewModel()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         updateUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadData()
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -38,16 +43,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     // MARK: - Actions
     private func loadData() {
-        /*widgetViewModel?.loadData { [weak self] in
+        todayViewModel.loadData { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.collectionView.reloadData()
-        }*/
-        let items = Network().fetchJSON(from: "top_games") as? [[AnyHashable: Any]]
-        for item in items ?? [] {
-            guard let model = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted).toModel(), let obj = model else { continue }
-            widgetViewModel?.models.append(obj)
+            DispatchQueue.main.async {
+                strongSelf.collectionView.reloadData()
+            }
         }
-        collectionView.reloadData()
     }
     
     private func updateUI() {
@@ -56,6 +57,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         layout.minimumInteritemSpacing = collectionlayout.minInteritemSpacing
         layout.minimumLineSpacing = collectionlayout.minLineSpacing
+        layout.sectionInset = sectionInsets
         
         layout.itemSize = CGSize(
             width: collectionlayout.size.width,
@@ -63,6 +65,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         )
         
         collectionView.collectionViewLayout = layout
+        collectionView.backgroundColor = .clear
     }
 }
 
@@ -70,15 +73,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 extension TodayViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let data = widgetViewModel?.models
-        return (data ?? []).count
+        return todayViewModel.models.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? WidgetCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? TodayCollectionViewCell
+        let data = todayViewModel.models
         
-        guard let data = widgetViewModel?.models else { return cell ?? UICollectionViewCell() }
         cell?.widgetCellViewModel = TodayCellViewModel(model: data[indexPath.item])
         
         return cell ?? UICollectionViewCell()

@@ -9,4 +9,6 @@
 #ifndef BridgeHeader_h
 #define BridgeHeader_h
 
+#import "KTCenterFlowLayout.h"
+
 #endif /* BridgeHeader_h */

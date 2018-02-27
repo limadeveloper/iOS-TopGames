@@ -1,5 +1,5 @@
 //
-//  WidgetGameModel.swift
+//  TodayGameModel.swift
 //  Widget
 //
 //  Created by John Lima on 26/02/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WidgetGameModel: Codable {
+struct TodayGameModel: Codable {
     
     let game: Game?
     let viewers: Int
@@ -46,20 +46,20 @@ struct WidgetGameModel: Codable {
 }
 
 extension Data {
-    func toModel() -> WidgetGameModel? {
-        return try? JSONDecoder().decode(WidgetGameModel.self, from: self)
+    func toModel() -> TodayGameModel? {
+        return try? JSONDecoder().decode(TodayGameModel.self, from: self)
     }
 }
 
 extension Collection {
     
-    func toModel() -> WidgetGameModel? {
+    func toModel() -> TodayGameModel? {
         guard let model = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted).toModel() else { return nil }
         return model
     }
     
-    func toModels() -> [WidgetGameModel]? {
-        var result = [WidgetGameModel]()
+    func toModels() -> [TodayGameModel]? {
+        var result = [TodayGameModel]()
         for item in self {
             guard let model = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted).toModel(), let obj = model else { continue }
             result.append(obj)
@@ -67,9 +67,9 @@ extension Collection {
         return result
     }
     
-    func noDuplicates() -> [WidgetGameModel]? {
-        let models = (self as? [WidgetGameModel] ?? [])
-        var result = [WidgetGameModel]()
+    func noDuplicates() -> [TodayGameModel]? {
+        let models = (self as? [TodayGameModel] ?? [])
+        var result = [TodayGameModel]()
         for model in models {
             let hasDuplicates = result.filter({ $0.game?.id == model.game?.id }).count > 0
             if !hasDuplicates {
