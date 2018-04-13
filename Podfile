@@ -9,7 +9,7 @@ target 'TopGames' do
   pod 'Alamofire', '~> 4.6'
   pod 'AlamofireImage', '~> 3.3'
   pod 'SwiftLint', '~> 0.24'
-  pod 'SwiftIconFont', '~> 2.7'
+  pod 'SwiftIconFont'
 
   target 'TopGamesTests' do
     inherit! :search_paths
@@ -19,5 +19,5 @@ target 'TopGames' do
     pod 'Nimble', '~> 7.0'
 
   end
-  
+
 end

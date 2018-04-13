@@ -14,6 +14,7 @@ struct APIClient {
     // MARK: - Properties
     private let api = "https://api.twitch.tv/kraken/"
     private let initialPage = 0
+    private let limitValue = 20
     
     // MARK: - Struct and Enums
     enum EndPoint: String {
@@ -48,9 +49,8 @@ struct APIClient {
     /// - Parameters:
     ///   - endPoint: end point using to fetch the games
     ///   - page: page number or offset
-    ///   - limitValue: the number of results
     ///   - completion: handle for results
-    func fetchTopGames(page: Int, limitValue: Int = 20, completion: (([Any]?, Error?) -> Void)?) {
+    func fetchTopGames(page: Int, completion: (([Any]?, Error?) -> Void)?) {
         
         let url = URL(string: api + EndPoint.topGames.rawValue)!
         
