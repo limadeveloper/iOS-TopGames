@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (4.6.0)
-  - AlamofireImage (3.3.0):
+  - Alamofire (4.7.1)
+  - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
   - KTCenterFlowLayout (1.3.1)
-  - Nimble (7.0.3)
+  - Nimble (7.1.0)
   - Quick (1.2.0)
   - SwiftIconFont (2.7.3)
-  - SwiftLint (0.25.0)
+  - SwiftLint (0.25.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6)
@@ -17,15 +17,25 @@ DEPENDENCIES:
   - SwiftIconFont (~> 2.7)
   - SwiftLint (~> 0.24)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireImage
+    - KTCenterFlowLayout
+    - Nimble
+    - Quick
+    - SwiftIconFont
+    - SwiftLint
+
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   KTCenterFlowLayout: 6e02b50ab2bd865025ae82fe266ed13b6d9eaf97
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble: 9c6651c3021af6de54c3ed90a4a0a87d548f7359
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SwiftIconFont: ebd8ee931a1e7072b61a87aec53f3a0786ef7f2b
-  SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
+  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
 PODFILE CHECKSUM: cd3e7da9175cf904983be374004bb039f47f7359
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
