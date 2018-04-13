@@ -3,6 +3,7 @@ platform :ios, '11.0'
 
 target 'TopGames' do
   use_frameworks!
+  inhibit_all_warnings!
 
   # Pods for TopGames
   pod 'KTCenterFlowLayout', '~> 1.3'
