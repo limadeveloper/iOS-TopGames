@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'TopGames' do
   use_frameworks!
@@ -9,9 +9,9 @@ target 'TopGames' do
   pod 'Alamofire', '~> 4.6'
   pod 'AlamofireImage', '~> 3.3'
   pod 'SwiftLint', '~> 0.24'
-  pod 'SwiftIconFont'
+  pod 'SwiftIconFont', '~> 2.7'
 
-  target 'TopGamesTests' do
+  target 'TopGamesUnitTests' do
     inherit! :search_paths
     
     # Pods for testing

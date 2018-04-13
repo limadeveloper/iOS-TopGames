@@ -1,0 +1,10 @@
+# .slather.yml
+
+input_format: profdata
+coverage_service: html
+scheme: TopGames
+workspace: TopGames.xcworkspace
+xcodeproj: TopGames.xcodeproj
+output_directory: coverage
+ignore:
+  - "ThirdParty/*"

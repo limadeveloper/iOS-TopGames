@@ -66,7 +66,7 @@ class HomeViewControllerSpec: QuickSpec {
                 expect(controller?.collectionView).to(beAnInstanceOf(UICollectionView.self))
                 expect(controller?.collectionView.dataSource).to(beAnInstanceOf(HomeViewController.self))
                 expect(controller?.collectionView.delegate).to(beAnInstanceOf(HomeViewController.self))
-                expect(controller?.collectionView.numberOfItems(inSection: 0)).to(equal(10))
+                expect(controller?.collectionView.numberOfItems(inSection: 0)).to(beGreaterThan(0))
                 expect(controller?.collectionlayout.minInteritemSpacing).to(equal(1))
                 expect(controller?.collectionlayout.minLineSpacing).to(equal(1))
                 expect(controller?.collectionlayout.size.percentWidth).to(equal(0.33))
