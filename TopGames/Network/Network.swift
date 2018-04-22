@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-struct APIClient {
+struct Network {
     
     // MARK: - Properties
     private let api = "https://api.twitch.tv/kraken/"

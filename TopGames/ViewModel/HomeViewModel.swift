@@ -14,7 +14,7 @@ class HomeViewModel: NSObject {
     private let pageIndexIncrement = 1
     private let emptyValue = 0
     
-    let apiClient = APIClient()
+    let apiClient = Network()
     let alpha: (min: Float, max: Float) = (0, 1)
     var models: [GameModel]?
     var searchModels: [GameModel]?

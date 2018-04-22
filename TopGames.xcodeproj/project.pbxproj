@@ -35,7 +35,7 @@
 		82BC092F2040F50C00636232 /* GameLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC092E2040F50C00636232 /* GameLogo.swift */; };
 		82BC09312040F53B00636232 /* GameImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09302040F53B00636232 /* GameImage.swift */; };
 		82BC09332040F55D00636232 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09322040F55D00636232 /* GameModel.swift */; };
-		82BC093C2040FB3800636232 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC093B2040FB3800636232 /* APIClient.swift */; };
+		82BC093C2040FB3800636232 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC093B2040FB3800636232 /* Network.swift */; };
 		82BC093E2041A8B900636232 /* StoryboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC093D2041A8B900636232 /* StoryboardUtil.swift */; };
 		82BC09422041A8F600636232 /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09412041A8F600636232 /* ColorUtil.swift */; };
 		82BC09442041A90800636232 /* FontUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09432041A90800636232 /* FontUtil.swift */; };
@@ -94,7 +94,7 @@
 		82BC092E2040F50C00636232 /* GameLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogo.swift; sourceTree = "<group>"; };
 		82BC09302040F53B00636232 /* GameImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameImage.swift; sourceTree = "<group>"; };
 		82BC09322040F55D00636232 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
-		82BC093B2040FB3800636232 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		82BC093B2040FB3800636232 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		82BC093D2041A8B900636232 /* StoryboardUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardUtil.swift; sourceTree = "<group>"; };
 		82BC09412041A8F600636232 /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
 		82BC09432041A90800636232 /* FontUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontUtil.swift; sourceTree = "<group>"; };
@@ -224,17 +224,17 @@
 		827FB85B203E7190001AF37C /* TopGames */ = {
 			isa = PBXGroup;
 			children = (
+				827FB881203E73BC001AF37C /* App */,
 				827FB886203E7484001AF37C /* Model */,
 				827FB887203E749F001AF37C /* View */,
 				827FB88C203E752A001AF37C /* ViewModel */,
-				827FB88D203E753C001AF37C /* API */,
+				827FB88D203E753C001AF37C /* Network */,
 				827FB88E203E755C001AF37C /* Util */,
-				827FB881203E73BC001AF37C /* Application */,
 			);
 			path = TopGames;
 			sourceTree = "<group>";
 		};
-		827FB881203E73BC001AF37C /* Application */ = {
+		827FB881203E73BC001AF37C /* App */ = {
 			isa = PBXGroup;
 			children = (
 				827FB85C203E7190001AF37C /* AppDelegate.swift */,
@@ -243,7 +243,7 @@
 				827FB893203E760A001AF37C /* Localizable.strings */,
 				827FB882203E7429001AF37C /* Fonts */,
 			);
-			path = Application;
+			path = App;
 			sourceTree = "<group>";
 		};
 		827FB882203E7429001AF37C /* Fonts */ = {
@@ -331,12 +331,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		827FB88D203E753C001AF37C /* API */ = {
+		827FB88D203E753C001AF37C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				82BC093B2040FB3800636232 /* APIClient.swift */,
+				82BC093B2040FB3800636232 /* Network.swift */,
 			);
-			path = API;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		827FB88E203E755C001AF37C /* Util */ = {
@@ -594,7 +594,7 @@
 				825F093220436E51009EEECB /* FavoritesViewController.swift in Sources */,
 				82BC0927203EEBDB00636232 /* DetailViewController.swift in Sources */,
 				827FB865203E7190001AF37C /* DBGame.xcdatamodeld in Sources */,
-				82BC093C2040FB3800636232 /* APIClient.swift in Sources */,
+				82BC093C2040FB3800636232 /* Network.swift in Sources */,
 				82BC093E2041A8B900636232 /* StoryboardUtil.swift in Sources */,
 				825F092E20431CE6009EEECB /* ImageViewUtil.swift in Sources */,
 				82BC092B203F94B700636232 /* TabBarController.swift in Sources */,
@@ -790,7 +790,7 @@
 				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9572JBENB;
-				INFOPLIST_FILE = TopGames/Application/Info.plist;
+				INFOPLIST_FILE = TopGames/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jlimadeveloper.TopGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -807,7 +807,7 @@
 				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9572JBENB;
-				INFOPLIST_FILE = TopGames/Application/Info.plist;
+				INFOPLIST_FILE = TopGames/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jlimadeveloper.TopGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
