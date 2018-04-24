@@ -9,10 +9,7 @@
 scheme("TopGames")
 configuration("Debug")
 
-devices([
-    "iPhone X", 
-    "iPad Pro (10.5-inch)"
-])
+device "iPhone X"
 
 clean(true)
 open_report true
