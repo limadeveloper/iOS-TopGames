@@ -7,16 +7,16 @@
 //
 
 struct FontUtil {
+  
+  struct FontName {
+    static let halo = "Halo"
+  }
+  
+  struct FontIcon {
     
-    struct FontName {
-        static let halo = "Halo"
+    struct FontAwesome {
+      static let heart = "heart"
+      static let cogs = "cogs"
     }
-    
-    struct FontIcon {
-        
-        struct FontAwesome {
-            static let heart = "heart"
-            static let cogs = "cogs"
-        }
-    }
+  }
 }
