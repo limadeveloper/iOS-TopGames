@@ -10,9 +10,6 @@ import UIKit
 
 class FavoritesDataSourceAndDelegate: NSObject {
   
-  // MARK: - Constants
-  private let kCellName = "\(HomeCell.self)"
-  
   // MARK: - Properties
   private var controller: FavoritesViewController?
   
@@ -32,14 +29,14 @@ extension FavoritesDataSourceAndDelegate: UICollectionViewDataSource, UICollecti
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellName, for: indexPath) as? HomeCell
+    let cell: HomeCell = collectionView.dequeueReusableCell(for: indexPath)
     
-    guard let data = controller?.homeViewModel.favoritesModels else { return cell ?? UICollectionViewCell() }
+    guard let data = controller?.homeViewModel.favoritesModels else { return cell }
     
-    cell?.homeCellViewModel = HomeCellViewModel(model: data[indexPath.item])
-    cell?.delegate = self
+    cell.homeCellViewModel = HomeCellViewModel(model: data[indexPath.item])
+    cell.delegate = self
     
-    return cell ?? UICollectionViewCell()
+    return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

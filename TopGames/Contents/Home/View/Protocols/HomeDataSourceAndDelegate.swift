@@ -11,7 +11,6 @@ import UIKit
 class HomeDataSourceAndDelegate: NSObject {
   
   // MARK: - Constants
-  private let kCellName = "\(HomeCell.self)"
   private let kTimeIntervalToDismissAlertWarning: TimeInterval = 5
   
   // MARK: - Properties
@@ -34,14 +33,14 @@ extension HomeDataSourceAndDelegate: UICollectionViewDataSource, UICollectionVie
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellName, for: indexPath) as? HomeCell
+    let cell: HomeCell = collectionView.dequeueReusableCell(for: indexPath)
     
-    guard let data = controller?.searchEnable == true ? controller?.homeViewModel.searchModels : controller?.homeViewModel.models else { return cell ?? UICollectionViewCell() }
+    guard let data = controller?.searchEnable == true ? controller?.homeViewModel.searchModels : controller?.homeViewModel.models else { return cell }
     
-    cell?.homeCellViewModel = HomeCellViewModel(model: data[indexPath.item])
-    cell?.delegate = self
+    cell.homeCellViewModel = HomeCellViewModel(model: data[indexPath.item])
+    cell.delegate = self
     
-    return cell ?? UICollectionViewCell()
+    return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
