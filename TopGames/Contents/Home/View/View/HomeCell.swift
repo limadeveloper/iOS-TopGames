@@ -14,7 +14,7 @@ protocol HomeCellDelegate: class {
   func homeCell(_ homeCell: HomeCell, didSelect favoriteButton: UIButton)
 }
 
-class HomeCell: UICollectionViewCell {
+class HomeCell: UICollectionViewCell, ReusableView {
   
   // MARK: - Constants
   private let kFavoriteButtonFontSize: CGFloat = 24

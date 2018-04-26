@@ -44,6 +44,8 @@
 		82BC09462041A98A00636232 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09452041A98A00636232 /* HomeViewModel.swift */; };
 		82BC09482041A9BC00636232 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09472041A9BC00636232 /* HomeCellViewModel.swift */; };
 		82BC094A2041BD4000636232 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BC09492041BD4000636232 /* NavigationController.swift */; };
+		82F6D257209172830052AE90 /* ViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D256209172830052AE90 /* ViewUtil.swift */; };
+		82F6D2592091737E0052AE90 /* CollectionViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D2582091737E0052AE90 /* CollectionViewUtil.swift */; };
 		DA41A48D6BE29F546DDF1349 /* Pods_TopGamesUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E936B83B22689276A46CCE1 /* Pods_TopGamesUnitTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +107,8 @@
 		82BC09452041A98A00636232 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		82BC09472041A9BC00636232 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
 		82BC09492041BD4000636232 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		82F6D256209172830052AE90 /* ViewUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtil.swift; sourceTree = "<group>"; };
+		82F6D2582091737E0052AE90 /* CollectionViewUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewUtil.swift; sourceTree = "<group>"; };
 		9E936B83B22689276A46CCE1 /* Pods_TopGamesUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopGamesUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBFDBB5024722C0919481A1 /* Pods-TopGamesUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGamesUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopGamesUnitTests/Pods-TopGamesUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC71A16EC5804C2180F828EE /* Pods_TopGamesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopGamesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -532,12 +536,14 @@
 		827FB88E203E755C001AF37C /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				82BC0928203F900000636232 /* LocalizedUtil.swift */,
-				82BC093D2041A8B900636232 /* StoryboardUtil.swift */,
+				825F091F2042852B009EEECB /* AlertUtil.swift */,
+				82F6D2582091737E0052AE90 /* CollectionViewUtil.swift */,
 				82BC09412041A8F600636232 /* ColorUtil.swift */,
 				82BC09432041A90800636232 /* FontUtil.swift */,
-				825F091F2042852B009EEECB /* AlertUtil.swift */,
 				825F092D20431CE6009EEECB /* ImageViewUtil.swift */,
+				82BC0928203F900000636232 /* LocalizedUtil.swift */,
+				82BC093D2041A8B900636232 /* StoryboardUtil.swift */,
+				82F6D256209172830052AE90 /* ViewUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -779,6 +785,7 @@
 				82BC092D2040F4C700636232 /* DataManager.swift in Sources */,
 				82BC0923203EEB6B00636232 /* HomeCell.swift in Sources */,
 				825F092C20431C06009EEECB /* DetailViewModel.swift in Sources */,
+				82F6D257209172830052AE90 /* ViewUtil.swift in Sources */,
 				8265790D208EC519009FB5F2 /* HomeDataSourceAndDelegate.swift in Sources */,
 				82BC09462041A98A00636232 /* HomeViewModel.swift in Sources */,
 				82BC09422041A8F600636232 /* ColorUtil.swift in Sources */,
@@ -794,6 +801,7 @@
 				82BC09482041A9BC00636232 /* HomeCellViewModel.swift in Sources */,
 				82BC09312040F53B00636232 /* GameImage.swift in Sources */,
 				82BC094A2041BD4000636232 /* NavigationController.swift in Sources */,
+				82F6D2592091737E0052AE90 /* CollectionViewUtil.swift in Sources */,
 				82BC092F2040F50C00636232 /* GameLogo.swift in Sources */,
 				8265790A208D489D009FB5F2 /* FavoritesDataSourceAndDelegate.swift in Sources */,
 				82BC0929203F900000636232 /* LocalizedUtil.swift in Sources */,
